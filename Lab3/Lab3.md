@@ -15,19 +15,18 @@ and for the ones that can be implemented compute:
 2. The average read access time in an ideal situation
 (i.e. how many Mbits per second?)
 
-You are not requested to use all the disks, but only the ones
-you need to accommodates your database of 750GB
+<u>You are not requested to use all the disks, but only the ones
+you need to accommodates your database of 750GB</u>
 ---
 #### 2.
 A RAID 4 configuration (parity disk at block level) is composed by 5 disks + the parity disk.
 
-The time for reading a block is 1 second, writing 5 second.
+The time for <u>reading</u> a block is <u>1 second</u>, <u>writing</u> <u>5 second.</u>
 The database needs to modify (write):
 
 (a) A data spread over 2 blocks in the same stripe
 
-List all the operations the RAID system is supposed to do to read
-the data and modify them taking into account the parity block.
+List all the operations the RAID system is supposed to do to read the data and modify them taking into account the parity block.
 
 (b) Can you do another write operation at the same time you are performing a)?
 
@@ -38,9 +37,9 @@ the data and modify them taking into account the parity block.
 Do the same exercise considering RAID 5 (parity block striped).
 Is there a difference?
 
-Assume that each disk has an hardware controller so that it is possible to perform perform parallel read and write from the disks.
+<u>Assume that each disk has an hardware controller so that it is possible to perform perform parallel read and write from the disks.</u>
 
-Remember that, even if part of the stripe is modified, the parity bit for the stripe has to be recomputed.
+<u>Remember that, even if part of the stripe is modified, the parity bit for the stripe has to be recomputed.</u>
 
 ---
 ### B-Trees
