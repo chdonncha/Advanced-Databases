@@ -10,10 +10,50 @@
 Show how to implement different level of RAID (0,1,3,5,10,0+1)
 and for the ones that can be implemented compute:
 
-1. storage effiency
-(disk space actually used for data / total disk space used)
-2. The average read access time in an ideal situation
-(i.e. how many Mbits per second?)
+1. storage effiency (disk space actually used for data / total disk space used)
+2. The average read access time in an ideal situation (i.e. how many Mbits per second?)
+
+##### RAID 0
+
+Storage effiency: 100%
+
+As we only require 750GB and can access up to 1000GB it gives a redundant 250GB
+
+##### RAID 1
+
+Storage effiency: 50%
+
+1000GB * .50 = 500GB (50% avilable harddisk)
+
+750-500=-250 (250GB more is required for a stable DB)
+
+It is not possible to establish a stable DB with the space provided
+
+##### RAID 3
+
+1 disk used for control
+
+= 100GB
+
+9 used for storage
+
+= 900GB
+= 750GB required for stable DB
+
+900 - 750GB = 150GB excess DB space
+
+so stroage effiency is 90%
+
+##### RAID 5
+
+Storage Effiency: <u>Exact same as RAID 3</U>
+
+
+##### RAID 10
+
+
+
+##### RAID 0+1
 
 <u>You are not requested to use all the disks, but only the ones
 you need to accommodates your database of 750GB</u>
@@ -47,6 +87,12 @@ Is there a difference?
 (a) Insert into a simple binary tree (it is not a b-tree, there are no balancing rules) the following data (respecting the order of arrivals):
 
 <b>2,4,5,6,8,10,9,14,16,18,7,22,1</b>
+
+```{mermaid}
+graph TD;
+  2-->A;
+  A-->C;
+```
 
 (b) Insert the same data into a B-Tree 2-3 (<u>2</u> data for each node, <u>3</u> pointers, as seen in class).
 
