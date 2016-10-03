@@ -19,6 +19,10 @@ Storage effiency: 100%
 
 As we only require 750GB and can access up to 1000GB it gives a redundant 250GB
 
+The average read access time is:
+
+(1000 * 8) + (500 * 2) = 9000Mbits/sec
+
 ##### RAID 1
 
 Storage effiency: 50%
@@ -88,11 +92,17 @@ Is there a difference?
 
 <b>2,4,5,6,8,10,9,14,16,18,7,22,1</b>
 
+Sorted: 1,2,4,5,6,7,8,9,10,14,16,18,22
+
 ```{mermaid}
 graph TD;
-  2-->A;
-  A-->C;
+  1-->2;
+  1-->4;
+  4-->5
+
 ```
+
+<b> finish </b>
 
 (b) Insert the same data into a B-Tree 2-3 (<u>2</u> data for each node, <u>3</u> pointers, as seen in class).
 
