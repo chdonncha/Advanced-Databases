@@ -68,15 +68,15 @@ A RAID 4 configuration (parity disk at block level) is composed by 5 disks + the
 The time for <u>reading</u> a block is <u>1 second</u>, <u>writing</u> <u>5 second.</u>
 The database needs to modify (write):
 
-(a) A data spread over 2 blocks in the same stripe
+<b>(a) A data spread over 2 blocks in the same stripe</b>
 
-List all the operations the RAID system is supposed to do to read the data and modify them taking into account the parity block.
+<u>List all the operations the RAID system is supposed to do to read the data and modify them taking into account the parity block.</u>
 
-(b) Can you do another write operation at the same time you are performing a)?
+<b>(b) Can you do another write operation at the same time you are performing a)?</b>
 
-(c) Can you do another read operation at the same time you are performing a)?
+<b>(c) Can you do another read operation at the same time you are performing a)?</b>
 
-(d) How long does operation (a) take?
+<b>(d) How long does operation (a) take?</b>
 
 Do the same exercise considering RAID 5 (parity block striped).
 Is there a difference?
@@ -88,7 +88,7 @@ Is there a difference?
 ---
 ### B-Trees
 ---
-(a) Insert into a simple binary tree (it is not a b-tree, there are no balancing rules) the following data (respecting the order of arrivals):
+<b>(a) Insert into a simple binary tree (it is not a b-tree, there are no balancing rules) the following data (respecting the order of arrivals):</b>
 
 <b>2,4,5,6,8,10,9,14,16,18,7,22,1</b>
 
@@ -108,7 +108,7 @@ Is there a difference?
     18 --> 22
 ```
 
-(b) Insert the same data into a B-Tree 2-3 (<u>2</u> data for each node, <u>3</u> pointers, as seen in class).
+<b>(b) Insert the same data into a B-Tree 2-3 (<u>2</u> data for each node, <u>3</u> pointers, as seen in class).</b>
 
 ```{mermaid}
   graph TD
@@ -123,4 +123,8 @@ Is there a difference?
     18/- --> 22/-
 ```
 
-(c) Compare the two trees. Can you see a difference? What is the main advantage of the B-tree?
+<b>(c) Compare the two trees. Can you see a difference? What is the main advantage of the B-tree?</b>
+
+The Binary Tree in this case is formed into almost an entirely list like structure. This will make make traverse times longer having to move through almost every single node just to get to the bottom most one.
+
+However the B-Tree is arranged into a much more efficient model. Even though it's not entirely free it still makes traverse speed much faster and provides much more structure to the system.
