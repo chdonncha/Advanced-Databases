@@ -10,8 +10,8 @@
 Show how to implement different level of RAID (0,1,3,5,10,0+1)
 and for the ones that can be implemented compute:
 
-1. storage effiency (disk space actually used for data / total disk space used)
-2. The average read access time in an ideal situation (i.e. how many Mbits per second?)
+<u>1. storage effiency (disk space actually used for data / total disk space used)</u>
+<u>2. The average read access time in an ideal situation (i.e. how many Mbits per second?)</u>
 
 ##### RAID 0
 
@@ -32,6 +32,8 @@ Storage effiency: 50%
 750-500=-250 (250GB more is required for a stable DB)
 
 It is not possible to establish a stable DB with the space provided
+
+As only half of the
 
 ##### RAID 3
 
