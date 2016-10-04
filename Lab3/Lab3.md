@@ -92,17 +92,18 @@ Is there a difference?
 
 <b>2,4,5,6,8,10,9,14,16,18,7,22,1</b>
 
-Sorted: 1,2,4,5,6,7,8,9,10,14,16,18,22
-
 ```{mermaid}
-graph TD;
-  1-->2;
-  1-->4;
-  4-->5
-
+  graph TD
+    6/14 --> 4/-
+    6/14 --> 9/-
+    6/14 --> 18/-
+    4/- --> 1/2
+    4/- --> 5/-
+    9/- --> 7/8
+    9/- --> 10/-
+    18/- --> 16/-
+    18/- --> 22/-
 ```
-
-<b> finish </b>
 
 (b) Insert the same data into a B-Tree 2-3 (<u>2</u> data for each node, <u>3</u> pointers, as seen in class).
 
