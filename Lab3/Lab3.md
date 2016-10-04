@@ -94,6 +94,24 @@ Is there a difference?
 
 ```{mermaid}
   graph TD
+    2 --> 4
+    2 --> 1
+    4 --> 5
+    5 --> 6
+    6 --> 8
+    8 --> 7
+    8 --> 10
+    10 --> 9
+    10 --> 14
+    14 --> 16
+    16 --> 18
+    18 --> 22
+```
+
+(b) Insert the same data into a B-Tree 2-3 (<u>2</u> data for each node, <u>3</u> pointers, as seen in class).
+
+```{mermaid}
+  graph TD
     6/14 --> 4/-
     6/14 --> 9/-
     6/14 --> 18/-
@@ -104,7 +122,5 @@ Is there a difference?
     18/- --> 16/-
     18/- --> 22/-
 ```
-
-(b) Insert the same data into a B-Tree 2-3 (<u>2</u> data for each node, <u>3</u> pointers, as seen in class).
 
 (c) Compare the two trees. Can you see a difference? What is the main advantage of the B-tree?
