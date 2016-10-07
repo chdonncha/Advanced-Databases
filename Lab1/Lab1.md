@@ -21,6 +21,8 @@ Performance
 Storage Efficiency
 Should new attributes be added?
 
+
+
 ---
 ### Exercise 2
 ---
