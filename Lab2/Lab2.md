@@ -31,6 +31,7 @@ Sales
 **Purchases**
 (<u>purchases_id</u>, <u>painting_code</u>, <u>purchases_code</u>, painting_title, artist, purchase_date, sales_price)
 
+test
 
 3NF
 ----
