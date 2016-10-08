@@ -8,16 +8,16 @@ It is is memory efficent as it's reuseing the same entity.
 
 Same priniple applies for acces time.
 
-![exercise1](exercise1.jpg)
+![exercise1](images/exercise1.jpg)
 
 ---
 ### Exercise 2
 ---
 <b><u>From ER diagram to relational model. You need to model the relationship between two entities E1 and E2. Suppose the key of E1 is the attribute K1 and the key of E2 is attribute K2.You can ignore the other entities attributes. Chose 3 of the following 6 situations and show how they can be modelled using a relational model (tables and keys) and how it can be implemented in oracle (using create table statements).
 
-![1](1.jpg)
+![1](images/1.jpg)
 
-1. ![!1_2](1_2.jpg)
+1. ![!1_2](images/1_2.jpg)
 
 Diagram represented as ERD
 
@@ -42,11 +42,31 @@ FOREIGN KEY (K1) REFERENCES E1 (K1)
 );
 ```
 
-2. ![1_3](1_3.jpg)
+2. ![1_3](images/1_3.jpg)
 
+Diagram represented as ERD
 
+![Exercise2_2](images/Exercise2_2.jpg)
 
-3. ![1_4](1_4.jpg)
+And can be represented in the following code
+
+```sql
+CREATE TABLE E1
+(
+	K1                   CHAR(18) NOT NULL ,
+ PRIMARY KEY (K1)
+);
+
+CREATE TABLE E2
+(
+	K2                   CHAR(18) NOT NULL ,
+	K1                   CHAR(18) NULL ,
+ PRIMARY KEY (K2),
+FOREIGN KEY (K1) REFERENCES E1 (K1) ON DELETE SET NULL
+);
+```
+
+3. ![1_4](images/1_4.jpg)
 
 Diagram represented as ERD
 
@@ -72,6 +92,8 @@ FOREIGN KEY (K1) REFERENCES E1 (K1) ON DELETE SET NULL
 ```
 
 <u>Consider the following relation: Is it possible to model it with a relational model and implement it with Oracle “create table” statements? Why?
+
+It is not possible
 
 ![2](2.jpg)
 
