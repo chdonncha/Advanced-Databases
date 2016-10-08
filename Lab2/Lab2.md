@@ -8,11 +8,13 @@
 
 <b><u>In the above example, the galley sold 4 paintings to the customer Jackson, the paintings were made by two artists. The painting “Toward Emerald Sea” was sold twice (since the gallery can sell, rebuy and resell). Note that each artist has a unique code, while each painting is numbered for each artist (i.e. the painting code is not unique, it is unique only for a specific artist). Store the customer address using the following fields: street, city and zip code. The zip code identifies a city. Store the phone as a single (text) field.
 
+test
+
 UNF
 ---
 
 Code
-Artist
+ArtistA
 Painting code and Title
 Purchase Date
 Sales
