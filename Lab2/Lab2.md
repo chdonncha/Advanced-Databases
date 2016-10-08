@@ -70,26 +70,37 @@ Code|Artist   |Painting code and Title   | Purchase Date
 
 <b><u>Assume the following: · Applications are submitted for each year, applications numbers are reset every year and therefore they are unique only inside each year.
 
-* Student ID is unique for all the years (is assigned once for all once the student submit her/his first application)
+* <b><u>Student ID is unique for all the years (is assigned once for all once the student submit her/his first application)
 
-* A student might move to another address and the database has to store all the students addresses
 
-* An applicant can only apply once during each year.
+* <b><u>A student might move to another address and the database has to store all the students addresses
 
-* Reference-Name and RefInstitution together are unique (but are not unique as separate attributes).
-* Prior-School-Id uniquely identifies a university or college.
 
-* A student might have many prior-schools and if she/he sends an applications in different years, it might have added a new prior school (therefore prior school lists might change across applications).
+* <b><u>An applicant can only apply once during each year.
 
-* An applicant has only one GPA from any specific prior school.
 
-* For each application there could be one or more referees
+* <b><u>Reference-Name and RefInstitution together are unique (but are not unique as separate attributes).
 
-* Referees may write a reference statement for more than one applicants.
 
-* However, the reference statement for different applicants is different.
+* <b><u>Prior-School-Id uniquely identifies a university or college.
 
-* Reference statements are attached to an application. If a student submit a second application, the reference statements (even from the same referee) could be different.
+
+* <b><u>A student might have many prior-schools and if she/he sends an applications in different years, it might have added a new prior school (therefore prior school lists might change across applications).
+
+
+* <b><u>An applicant has only one GPA from any specific prior school.
+
+
+* <b><u>For each application there could be one or more referees
+
+
+* <b><u>Referees may write a reference statement for more than one applicants.
+
+
+* <b><u>However, the reference statement for different applicants is different.
+
+
+* <b><u>Reference statements are attached to an application. If a student submit a second application, the reference statements (even from the same referee) could be different.
 
 drop table Apps_NOT_Normalized;
 Create Table Apps_NOT_Normalized(
