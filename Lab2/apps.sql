@@ -54,33 +54,35 @@ insert into Apps_NOT_Normalized values(3,6,'Susan','River Road','Kansas','Kan45'
 
 select * from Apps_NOT_Normalized;
 
+
+
 Schools
 
-1
+1,
 
 student
 
 student, id, student name, zipcode
 
-1, Mark
-2, Sarah
-3, Paul
-4, Jack
-5, Mary
-6, Susan
+insert into Student values(1, 'Mark', NY234);
+insert into Student values(2, 'Sarah', NY234);
+insert into Student values(3, 'Paul', NY234);
+insert into Student values(4, 'Jack', NY234);
+insert into Student values(5, 'Mary', NY234);
+insert into Student values(6, 'Susan', NY234);
 
 zip
 
 zipcode, street, state
 
-NY234, Grafton Street, New York
-Flo435, White Street, Flordia
-Cal123, Green Road, California
-Ca455, Red Crescent, California
-Mex1, Yellow, Mexico
-Oh34, Dartry Road, Ohio
-IRE, Malahide Road, Ireland
-Kan45, River Road, Kansas
+insert into Zip values('NY234', 'Grafton Street', 'New York');
+insert into Zip values('Flo435', 'White Street', 'Flordia');
+insert into Zip values('Cal123', 'Green Road', 'California');
+insert into Zip values('Ca455', 'Red Crescent', 'California');
+insert into Zip values('Mex1', 'Yellow', 'Mexico');
+insert into Zip values('Oh34', 'Dartry Road', 'Ohio');
+insert into Zip values('IRE', 'Malahide Road', 'Ireland');
+insert into Zip values('Kan45', 'River Road', 'Kansas');
 
 schools
 
