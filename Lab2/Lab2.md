@@ -110,4 +110,4 @@ UNF
 
 3NF
 
-![5](images/5.jpg)
+![5](images/6.jpg)

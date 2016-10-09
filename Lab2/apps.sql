@@ -65,15 +65,11 @@ student
 student, id, student name, zipcode
 
 insert into Student values(1, 'Mark', 'NY234');
-insert into Student values(2, 'Sarah', 'NY234');
-insert into Student values(3, 'Paul', 'NY234');
-insert into Student values(4, 'Jack', 'NY234');
-insert into Student values(5, 'Mary', 'NY234');
-insert into Student values(6, 'Susan', 'NY234');
-
-zip
-
-zipcode, street, state
+insert into Student values(2, 'Sarah', 'Flo435');
+insert into Student values(3, 'Paul', 'Mex1');
+insert into Student values(4, 'Jack', 'Oh34');
+insert into Student values(5, 'Mary', 'Kan45');
+insert into Student values(6, 'Susan', 'Kan45');
 
 insert into Zip values('NY234', 'Grafton Street', 'New York');
 insert into Zip values('Flo435', 'White Street', 'Flordia');
@@ -84,7 +80,17 @@ insert into Zip values('Oh34', 'Dartry Road', 'Ohio');
 insert into Zip values('IRE', 'Malahide Road', 'Ireland');
 insert into Zip values('Kan45', 'River Road', 'Kansas');
 
-schools
+insert into EducationInstitute values(1, 'Castleknock');
+insert into EducationInstitute values(2, 'Loreto College');
+insert into EducationInstitute values(3, 'St.Patrick');
+insert into EducationInstitute values(4, 'DBS');
+insert into EducationInstitute values(5, 'Harvard');
+insert into EducationInstitute values(6, 'Trinity College');
+insert into EducationInstitute values(7, 'U Limerick');
+insert into EducationInstitute values(8, 'DIT');
+insert into EducationInstitute values(9, 'UCD');
+insert into EducationInstitute values(10, 'UCC');
+
 
 /*1, Castleknock
 2, Loreto College
