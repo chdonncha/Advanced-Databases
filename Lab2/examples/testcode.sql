@@ -1,17 +1,16 @@
-DROP TABLE Zip CASCADE CONSTRAINTS PURGE;
-DROP TABLE Schools CASCADE CONSTRAINTS PURGE;
-DROP TABLE Student CASCADE CONSTRAINTS PURGE;
-DROP TABLE Referee CASCADE CONSTRAINTS PURGE;
-DROP TABLE Referee_School CASCADE CONSTRAINTS PURGE;
-DROP TABLE Reference CASCADE CONSTRAINTS PURGE;
-DROP TABLE Application CASCADE CONSTRAINTS PURGE;
+#DROP TABLE Zip CASCADE CONSTRAINTS PURGE;
+#DROP TABLE Schools CASCADE CONSTRAINTS PURGE;
+#DROP TABLE Student CASCADE CONSTRAINTS PURGE;
+#DROP TABLE Referee CASCADE CONSTRAINTS PURGE;
+#DROP TABLE Referee_School CASCADE CONSTRAINTS PURGE;
+#DROP TABLE Reference CASCADE CONSTRAINTS PURGE;
+#DROP TABLE Application CASCADE CONSTRAINTS PURGE;
 
 create table Zip (
-  ZipCode varchar(7),
+  ZipCode varchar(7) primary key,
   Street varchar(30),
-  State varchar(30),
+  State varchar(30)
 
-primary key(ZipCode, Street)
 );
 
 create table Schools (
@@ -25,7 +24,7 @@ create table Student (
   StudentName varchar(50),
   ZipCode varchar(7),
 
-  foreign key (ZipCode) references Zip(ZipCode)
+  FOREIGN KEY (ZipCode) REFERENCES Zip (ZipCode)
 );
 
   create table Referee (
@@ -38,10 +37,10 @@ create table Student (
 );
 
 create table Referee_School (
-  RefereeId integer,
+  RefereeId integer primary key,
   SchoolId integer,
 
-  primary key(RefereeId, SchooolId),
+
   foreign key (RefereeId) references Referee(RefereeId),
   foreign key (SchoolId) references Schools(SchoolId)
 );
@@ -55,16 +54,14 @@ create table Reference (
 );
 
 create table Application (
-  ApplicationNumber integer,
+  ApplicationNumber integer primary key,
   StudentId integer,
   AppYear integer,
   ReferenceId integer,
   PriorSchoolId integer,
   GPA number(2),
 
-  primary key (ApplicationNumber, StudentId, AppYear),
-
-  foreign key StudentId references Student(StudentId),
-  foreign key ReferenceId references Reference(ReferenceId),
-  foreign key PriorSchoolId references Schools(SchoolId)
+  foreign key (StudentId) references Student(StudentId),
+  foreign key (ReferenceId) references Reference(ReferenceId),
+  foreign key (PriorSchoolId) references Schools(SchoolId)
 );

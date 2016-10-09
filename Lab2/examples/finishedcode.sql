@@ -71,3 +71,5 @@ CREATE TABLE Application
 	CONSTRAINT R_7 FOREIGN KEY (ReferenceId) REFERENCES Reference (ReferenceId),
 	CONSTRAINT R_8 FOREIGN KEY (PriorSchoolId) REFERENCES Schools (SchoolId)
 );
+
+INSERT INTO
