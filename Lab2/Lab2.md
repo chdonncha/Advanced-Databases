@@ -31,8 +31,6 @@ Sales
 **Purchases**
 (<u>purchases_id</u>, <u>painting_code</u>, <u>purchases_code</u>, painting_title, artist, purchase_date, sales_price)
 
-test
-
 3NF
 ----
 
@@ -97,33 +95,3 @@ test
 
 
 * <b><u>Reference statements are attached to an application. If a student submit a second application, the reference statements (even from the same referee) could be different.
-
-drop table Apps_NOT_Normalized;
-Create Table Apps_NOT_Normalized(
-  App_No integer,
-  StudentID integer,
-  StudentName varchar(50),
-  Street varchar(100),
-  State varchar(30),
-  ZipCode varchar(7),
-  App_Year integer,
-  ReferenceName varchar(100),
-  RefInstitution  varchar(100),
-  ReferenceStatement varchar(500),
-  PriorSchoolId integer,
-  PriorSchoolAddr varchar(100),
-  GPA number(2)
-);
-
-insert into Apps_NOT_Normalized values
-  (1,
-    1,
-    'Mark','Grafton Street',
-    'New York',
-    'NY234',2003,
-    'Dr. Jones',
-    'Trinity College',
-    'Good guy',
-    1,
-    'Castleknock',
-    65);
