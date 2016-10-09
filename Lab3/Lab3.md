@@ -13,19 +13,35 @@ and for the ones that can be implemented compute:
 <u>1. storage effiency (disk space actually used for data / total disk space used)</u>
 <u>2. The average read access time in an ideal situation (i.e. how many Mbits per second?)</u>
 
+---
+
 ##### RAID 0
 
-Storage effiency: 100%
+<b>Storage effiency: 100%
 
 As we only require 750GB and can access up to 1000GB it gives a redundant 250GB
 
-The average read access time is:
+<b>The average read access time is:
 
 (1000 * 8) + (500 * 2) = 9000Mbits/sec
 
+1 mbit = 0.125mb
+
+9000mbit/sec = 1125mb/sec
+
+750gb = 768000
+
+768000 / 1125 = <u>683 seconds</u>
+
+or
+
+1000gb = 1024000mb
+
+---
+
 ##### RAID 1
 
-Storage effiency: 50%
+<b>Storage effiency: 50% or lower
 
 1000GB * .50 = 500GB (50% avilable harddisk)
 
@@ -35,7 +51,17 @@ It is not possible to establish a stable DB with the space provided
 
 As only half of the
 
+<b>The average read access time is:
+
+500gb = 512000mb
+
+512000 / 1125 = <u>455 seconds</u>
+
+---
+
 ##### RAID 3
+
+Storage effiency: Medium
 
 1 disk used for control
 
@@ -48,18 +74,25 @@ As only half of the
 
 900 - 750GB = 150GB excess DB space
 
-so stroage effiency is 90%
+so storage effiency is 90%
 
 ##### RAID 5
 
 Storage Effiency: <u>Exact same as RAID 3</U>
 
-
 ##### RAID 10
 
+Storage effiency: 50% (Low)
 
+first RAID 1 then RAID 0
 
 ##### RAID 0+1
+
+Storage effiency: 50% (Low)
+
+first RAID 0 then RAID 1
+
+
 
 <u>You are not requested to use all the disks, but only the ones
 you need to accommodates your database of 750GB</u>

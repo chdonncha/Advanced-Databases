@@ -54,5 +54,38 @@ insert into Apps_NOT_Normalized values(3,6,'Susan','River Road','Kansas','Kan45'
 
 select * from Apps_NOT_Normalized;
 
+Schools
 
+1
 
+student
+
+student, id, student name, zipcode
+
+1, Mark
+2, Sarah
+3, Paul
+4, Jack
+5, Mary
+6, Susan
+
+zip
+
+zipcode, street, state
+
+NY234, Grafton Street, New York
+Flo435, White Street, Flordia
+Cal123, Green Road, California
+Ca455, Red Crescent, California
+Mex1, Yellow, Mexico
+Oh34, Dartry Road, Ohio
+IRE, Malahide Road, Ireland
+Kan45, River Road, Kansas
+
+schools
+
+1, Castleknock
+2, Loreto College
+3, St.Patrick
+4, DBS
+5, Harvard
