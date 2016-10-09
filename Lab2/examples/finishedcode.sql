@@ -6,29 +6,29 @@ DROP TABLE Referee_School CASCADE CONSTRAINTS PURGE;
 DROP TABLE Reference CASCADE CONSTRAINTS PURGE;
 DROP TABLE Application CASCADE CONSTRAINTS PURGE;*/
 
-CREATE TABLE Schools
+CREATE TABLE EducationInstitute
 (
-	SchoolId             integer NOT NULL,
-	SchoolName/Addr      varchar(100) NULL,
-	PRIMARY KEY (SchoolId)
+	InstituteId             integer NOT NULL,
+	InstituteName           varchar(100) NULL,
+	PRIMARY KEY (InstituteId)
 );
 
 CREATE TABLE Referee
 (
 	RefereeId            integer NOT NULL,
 	RefereeName          varchar(50) NULL,
-	SchoolId             integer NULL,
+	InstituteId             integer NULL,
 	PRIMARY KEY (RefereeId),
-	CONSTRAINT R_2 FOREIGN KEY (SchoolId) REFERENCES Schools (SchoolId)
+	CONSTRAINT R_2 FOREIGN KEY (InstituteId) REFERENCES EducationInstitute (InstituteId)
 );
 
-CREATE TABLE Referee_School
+CREATE TABLE RefereeInstitute
 (
 	RefereeId            integer NOT NULL,
-	SchoolId             integer NULL,
+	InstituteId             integer NULL,
 	PRIMARY KEY (RefereeId),
 	CONSTRAINT R_3 FOREIGN KEY (RefereeId) REFERENCES Referee (RefereeId),
-	CONSTRAINT R_4 FOREIGN KEY (SchoolId) REFERENCES Schools (SchoolId)
+	CONSTRAINT R_4 FOREIGN KEY (InstituteId) REFERENCES EducationInstitute (InstituteId)
 );
 
 CREATE TABLE Zip
@@ -63,12 +63,10 @@ CREATE TABLE Application
 	StudentId            integer NULL,
 	AppYear              integer NULL,
 	ReferenceId          integer NULL,
-	PriorSchoolId        integer NULL,
+	PriorInstituteId     integer NULL,
 	GPA                  number(2) NULL,
 	PRIMARY KEY (ApplicationNumber),
 	CONSTRAINT R_6 FOREIGN KEY (StudentId) REFERENCES Student (StudentId),
 	CONSTRAINT R_7 FOREIGN KEY (ReferenceId) REFERENCES Reference (ReferenceId),
-	CONSTRAINT R_8 FOREIGN KEY (PriorSchoolId) REFERENCES Schools (SchoolId)
+	CONSTRAINT R_8 FOREIGN KEY (PriorInstituteId) REFERENCES EducationInstitute (InstituteId)
 );
-
-INSERT INTO
