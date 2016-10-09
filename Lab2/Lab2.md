@@ -95,3 +95,15 @@ Sales
 
 
 * <b><u>Reference statements are attached to an application. If a student submit a second application, the reference statements (even from the same referee) could be different.
+
+UNF
+
+![2](images/2.jpg)
+
+1NF
+
+![3](images/3.jpg)
+
+4NF
+
+![5](images/5.jpg)
