@@ -91,28 +91,23 @@ insert into EducationInstitute values(8, 'DIT');
 insert into EducationInstitute values(9, 'UCD');
 insert into EducationInstitute values(10, 'UCC');
 
+insert into Referee(1, Dr. Jones);
+insert into Referee(2, Dr. Bryne);
+insert into Referee(3, Prof. Cahill);
+insert into Referee(4, Prof. Lillis);
 
-/*1, Castleknock
-2, Loreto College
-3, St.Patrick
-4, DBS
-5, Harvard*/
-
-Referee
-
-RefereeId, RefereeName, SchoolId
-
-1, Dr. Jones, 1
-2, Dr. Bryne
-3, Prof. Cahill,
-4, Prof. Lillis
-
-Reference
 insert into Reference values(1, 'Good guy', 1);
 insert into Reference values(2, 'Very Good guy', 1);
 insert into Reference values(3, 'Perfect', 2);
 insert into Reference values(4, 'Average', 2);
 insert into Reference values(5, 'Poor', 1);
+
+insert into RefereeInstitute values(1, 6);
+insert into RefereeInstitute values(1, 7);
+insert into RefereeInstitute values(2, 8);
+insert into RefereeInstitute values(2, 9);
+insert into RefereeInstitute values(3, 10);
+insert into RefereeInstitute values(4, 8);
 
 Application
 1,1,20031
