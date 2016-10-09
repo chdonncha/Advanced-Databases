@@ -110,4 +110,5 @@ insert into RefereeInstitute values(3, 10);
 insert into RefereeInstitute values(4, 8);
 
 Application
+ApplicationNumber, StudentId, AppYear, ReferenceId, PriorSchoolId, GPA
 1,1,20031
