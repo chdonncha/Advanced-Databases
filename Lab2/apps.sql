@@ -64,12 +64,12 @@ student
 
 student, id, student name, zipcode
 
-insert into Student values(1, 'Mark', NY234);
-insert into Student values(2, 'Sarah', NY234);
-insert into Student values(3, 'Paul', NY234);
-insert into Student values(4, 'Jack', NY234);
-insert into Student values(5, 'Mary', NY234);
-insert into Student values(6, 'Susan', NY234);
+insert into Student values(1, 'Mark', 'NY234');
+insert into Student values(2, 'Sarah', 'NY234');
+insert into Student values(3, 'Paul', 'NY234');
+insert into Student values(4, 'Jack', 'NY234');
+insert into Student values(5, 'Mary', 'NY234');
+insert into Student values(6, 'Susan', 'NY234');
 
 zip
 

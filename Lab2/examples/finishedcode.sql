@@ -9,8 +9,7 @@ DROP TABLE Application CASCADE CONSTRAINTS PURGE;*/
 CREATE TABLE Schools
 (
 	SchoolId             integer NOT NULL,
-	SchoolName           varchar(100) NULL,
-	SchoolAddress        varchar(100) NULL,
+	SchoolName/Addr      varchar(100) NULL,
 	PRIMARY KEY (SchoolId)
 );
 
