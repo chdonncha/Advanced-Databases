@@ -12,7 +12,7 @@ create table Schools (
   SchoolAddress varchar(100)
 );
 
-create table student (
+create table Student (
   StudentId integer primary key,
   StudentName varchar(50),
   ZipCode varchar(7),
