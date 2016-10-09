@@ -13,6 +13,9 @@ and for the ones that can be implemented compute:
 <u>1. storage effiency (disk space actually used for data / total disk space used)</u>
 <u>2. The average read access time in an ideal situation (i.e. how many Mbits per second?)</u>
 
+<u>You are not requested to use all the disks, but only the ones
+you need to accommodates your database of 750GB</u>
+
 ---
 
 ##### RAID 0
@@ -36,6 +39,8 @@ As we only require 750GB and can access up to 1000GB it gives a redundant 250GB
 or
 
 1000gb = 1024000mb
+
+1024000 /  1125 = <u>910 seconds</u> for the entire database
 
 ---
 
@@ -61,7 +66,7 @@ As only half of the
 
 ##### RAID 3
 
-Storage effiency: Medium
+<b>Storage effiency: Medium
 
 1 disk used for control
 
@@ -76,26 +81,46 @@ Storage effiency: Medium
 
 so storage effiency is 90%
 
+<b>The average read access time is:
+
+900gb = 921600
+
+921600 / 1125 = <u>819 seconds </u>
+
+---
+
 ##### RAID 5
 
-Storage Effiency: <u>Exact same as RAID 3</U>
+<b>Storage Effiency: <u>Exact same as RAID 3</U>
+
+<b>The average read access time is:
+
+921600 / 1125 = <u>819 seconds </u>
+
+---
 
 ##### RAID 10
 
-Storage effiency: 50% (Low)
+<b>Storage effiency: 50% (Low)
 
 first RAID 1 then RAID 0
 
+<b>The average read access time is:
+
+910 seconds + 455 seconds = <u>1365 seconds</u>
+
+---
+
 ##### RAID 0+1
 
-Storage effiency: 50% (Low)
+<b>Storage effiency: 50% (Low)
 
 first RAID 0 then RAID 1
 
+<b>The average read access time is:
 
+455 seconds + 910 seconds = <u>1365 seconds</u>
 
-<u>You are not requested to use all the disks, but only the ones
-you need to accommodates your database of 750GB</u>
 ---
 #### 2.
 A RAID 4 configuration (parity disk at block level) is composed by 5 disks + the parity disk.
