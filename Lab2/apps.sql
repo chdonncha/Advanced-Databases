@@ -95,4 +95,16 @@ Referee
 RefereeId, RefereeName, SchoolId
 
 1, Dr. Jones, 1
-2, 
+2, Dr. Bryne
+3, Prof. Cahill,
+4, Prof. Lillis
+
+Reference
+insert into Reference values(1, 'Good guy', 1);
+insert into Reference values(2, 'Very Good guy', 1);
+insert into Reference values(3, 'Perfect', 2);
+insert into Reference values(4, 'Average', 2);
+insert into Reference values(5, 'Poor', 1);
+
+Application
+1,1,20031
