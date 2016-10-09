@@ -102,8 +102,12 @@ UNF
 
 1NF
 
+![4](images/4_1.jpg)
+
+2NF
+
 ![3](images/3.jpg)
 
-4NF
+3NF
 
 ![5](images/5.jpg)

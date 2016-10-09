@@ -6,7 +6,7 @@ This example below is a good solution as it allows there to be multiple Toy- Des
 
 It is is memory efficent as it's reuseing the same entity.
 
-Same priniple applies for acces time.
+Same priniple applies for access time.
 
 ![exercise1](images/exercise1.jpg)
 
@@ -103,32 +103,4 @@ It is not possible
 ---
 <b><u>Design a Relational model for a cinema DB. A company is managing more than 50 cinemas over the country. You are required to design their relational DB, showing tables with primary and foreign keys to model relationships among tables. For each cinema, it is important to store its location, contact number, name and number of screens. Each day in each screen there are many shows at different times. The DB has a list of all the movies (past and present) shown, with the title of the movie, duration and rating. The number of seats for each screen is recorded as well. The DB contains the booking system data as well. In order to submit a booking, each customer must be registered with a username, password, DOB. Users can book tickets for a specific show. A booking consists of a number of tickets for a specific show at a specific time, screen and cinema. Tickets have different prices depending if they are adult or child ticket. Seats numbers are assigned during the booking (the user can select them). Therefore, a booking is for instance, “3 adult tickets + 2 child tickets for movie X at time Y at cinema Z screen W, seats 3,4,56”. The total price of a booking is also recorded.  Note that a unique booking ID is generated for each booking since the same user can book twice for the same movie.
 
-![Exercise3](images/exercise3.jpg)
-
-company has more than 50 cinemas over the country
-
-show primary and foreign keys
-
-each cinema: location, contact number, name, number of screens
-
-Each screen has many different times
-
-Movies shown, title, duration, rating
-
-number of seats for each screen is recorded as well
-
-each user must be registered to submit a booking
-
-customer: username, password, DOB
-
-they can book tickets for a specified show
-
-booking: number of tickets, specific show, specific time, screen and cinema
-
-tickets have different prices depending if they are an adult or child
-
-seat numbers are assigned during booking
-
-total price is also recorded
-
-unique booking ID is generated for each booking
+![Exercise3](images/6.jpg)
