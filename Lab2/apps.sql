@@ -103,9 +103,9 @@ insert into Reference values(4, 'Average', 2);
 insert into Reference values(5, 'Poor', 1);
 
 insert into RefereeInstitute values(1, 6);
-insert into RefereeInstitute values(1, 7);
+--insert into RefereeInstitute values(1, 7);
 insert into RefereeInstitute values(2, 8);
-insert into RefereeInstitute values(2, 9);
+--insert into RefereeInstitute values(2, 9);
 insert into RefereeInstitute values(3, 10);
 insert into RefereeInstitute values(4, 8);
 
