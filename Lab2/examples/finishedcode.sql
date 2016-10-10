@@ -105,6 +105,10 @@ insert into Reference values(2, 'Very Good guy', 1);
 insert into Reference values(3, 'Perfect', 2);
 insert into Reference values(4, 'Average', 2);
 insert into Reference values(5, 'Poor', 1);
+insert into Reference values(6, 'Excellent', 3);
+insert into Reference values(7, 'Fair', 4);
+insert into Reference values(8, 'Good girl', 4);
+insert into Reference values(9, 'Messy', 3);
 
 insert into RefereeInstitute values(1, 6);
 --insert into RefereeInstitute values(1, 7);
@@ -114,12 +118,47 @@ insert into RefereeInstitute values(3, 10);
 insert into RefereeInstitute values(4, 8);
 
 Application
-ApplicationNumber, StudentId, AppYear, ReferenceId, PriorSchoolId, GPA
+ApplicationNumber, StudentId, AppYear,
+ReferenceId, PriorSchoolId, GPA
 
 insert into Application(1,1,2003,1,1,65);
-insert into Application(1,1,2003,1,1,65);
-insert into Application(1,1,2003,1,1,65);
-insert into Application(1,1,2003,1,1,65);
-insert into Application(1,1,2003,1,1,65);
-insert into Application(1,1,2003,1,1,65);
-insert into Application(1,1,2003,1,1,65);
+insert into Application(1,1,2004,1,1,65);
+insert into Application(2,1,2007,1,1,65);
+insert into Application(2,1,2007,1,2,87);
+insert into Application(3,1,2012,1,1,65);
+insert into Application(3,1,2012,1,2,87);
+
+insert into Application(2,2,2010,3,1,90);
+insert into Application(2,2,2010,3,2,76);
+insert into Application(2,2,2011,3,2,90);
+insert into Application(2,2,2011,3,2,76);
+insert into Application(2,2,2012,4,2,90);
+insert into Application(2,2,2012,4,2,76);
+insert into Application(2,2,2012,4,2,66);
+insert into Application(2,2,2012,4,2,45);
+
+insert into Application(1,3,2012,5,1,45);
+insert into Application(1,3,2012,5,3,67);
+insert into Application(1,3,2012,5,4,23);
+insert into Application(1,3,2012,5,5,67);
+insert into Application(3,3,2008,6,1,45);
+insert into Application(3,3,2008,6,3,67);
+insert into Application(3,3,2008,6,4,23);
+insert into Application(3,3,2008,6,5,67);
+
+insert into Application(1,4,2009,7,3,29);
+insert into Application(1,4,2009,7,4,88);
+insert into Application(1,4,2009,7,5,66);
+
+insert into Application(2,5,2009,8,3,44);
+insert into Application(2,5,2009,8,4,55);
+insert into Application(2,5,2009,8,5,66);
+insert into Application(2,5,2009,8,1,74);
+insert into Application(1,5,2005,3,3,44);
+insert into Application(1,5,2005,3,4,55);
+insert into Application(1,5,2005,3,5,66);
+
+insert into Application(3,6,2011,9,1,88);
+insert into Application(3,6,2011,9,3,77);
+insert into Application(3,6,2011,9,4,56);
+insert into Application(3,6,2011,9,2,45);
