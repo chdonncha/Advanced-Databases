@@ -2,7 +2,7 @@
 
 2. Execute the following query Query1.  select * from persons And select the explain plain function.
 
-How much is the cost? <u>€68
+How much is the cost? <u> 68
 
 Was it a full or index scan of the table? <u>Full Scan
 
@@ -10,8 +10,8 @@ Why? <u>There's no primary keys set in the tables
 
 3. Execute Query2 . select * from persons where person_id>1000 and person_id<3000
 
-Total cost?
-Full or index scan? <u>Full scan
+Total cost? <u> 68
+Full or index scan? <u>Index Scan
 Why?
 Any difference with the previous query?
 
