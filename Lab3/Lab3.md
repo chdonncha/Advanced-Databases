@@ -26,21 +26,11 @@ As we only require 750GB and can access up to 1000GB it gives a redundant 250GB
 
 <b>The average read access time is:
 
-(1000 * 8) + (500 * 2) = 9000Mbits/sec
+1000 * 8 = 8000Mbits/sec
 
-1 mbit = 0.125mb
+750gb = 6,144,000mbit
 
-9000mbit/sec = 1125mb/sec
-
-750gb = 768000
-
-768000 / 1125 = <u>683 seconds</u>
-
-or
-
-1000gb = 1024000mb
-
-1024000 /  1125 = <u>910 seconds</u> for the entire database
+6144000 / 8000 = 768 seconds
 
 ---
 
