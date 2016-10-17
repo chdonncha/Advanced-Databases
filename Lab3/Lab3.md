@@ -48,9 +48,7 @@ As only half of the
 
 <b>The average read access time is:
 
-500gb = 512000mb
-
-512000 / 1125 = <u>455 seconds</u>
+can't implement as the database is too big for the storage space
 
 ---
 
