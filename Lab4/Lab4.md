@@ -3,38 +3,74 @@
 ---
 
 <b>2. Execute the following query Query1</b>
-<b>select * from persons And select the explain plain function.</b>
-<b>And explain the plain function</b>
 
-<b>How much is the cost?:</b> <u>68</u>
-<b>Was it a full or index scan of the table?:</b> <u>Full Scan</u>
-<b>Why?:</b> <u>There's no primary keys set in the tables</u>
+How much is the cost?: <u>68</u>
+Was it a full or index scan of the table?: <u>Full Scan</u>
+Why?: <u>There's no primary keys set in the tables</u>
 
 ---
 
-<b>3. Execute Query2 . select * from persons where person_id>1000 and person_id<3000
+<b>3. Execute Query2
 
-<b>Total cost:</b> <u>68</u>
-<b>Full or index scan?:</b> <u>Index Scan</u>
-<b>Why?:</b>
-<b>Any difference with the previous query?<b>:
+Total cost: <u>68</u>
+Full or index scan?: <u>Index Scan</u>
+Why?:
+Any difference with the previous query?
 
 ---
 
 <b>4. Define a primary key over person_id (using an ALTER TABLE … ADD CONSTRAINTS statement) Remember that this creates an index on person_id as well. Perform Query1
 
-<b>Cost?:</b>
+Cost?:
 
-<b>Full or Index?:</b>
+Full or Index?:
 
-<b>Comment the results:</b>
+Comment the results:
 
-<b>Perform Query2:</b>
+Perform Query2:
 
-<b>Cost?:</b>
+Cost?:
 
-<b>Full or Index?:</b>
+Full or Index?:
 
-<b>Comment the results:<b/>
+Comment the results:
 
-<b>Query1 requires a full scan since it gives back the full unfiltered table Query2 requires uses the index scan on the primary index person_id to filter the data. Note that range scan refers to accessing an interval of value (range) using an index (therefore oracle finds the starting point using the index and then the scan is sequential over an ordered list. It is therefore faster than full scan)</b>
+---
+
+<b>5. Perform the following
+
+<b><u>Query 3
+
+Cost:
+Type of Scan:
+
+<b><u>Query 4
+
+Cost:
+Type of Scan:
+
+Comment the behaviour of Query3 and Query4:
+
+<b>6. Execute
+<b><u>Query
+
+Cost:
+Full or Index:
+Comment the results:
+
+
+<b>7. Execute
+
+Query 5
+
+Cost:
+Full or Index:
+
+Cost:
+Full or Index:
+
+<b>8. Joining two tables
+
+Cost:
+Full or Index:
+Comment the results:
