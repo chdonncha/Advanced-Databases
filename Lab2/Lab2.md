@@ -48,54 +48,6 @@ Sales
 
 ## Exercise 2
 
-<b><u>You are required to:
-
-<b><u>1. Create the table Apps_NOT_Normalized running the sql script applications.sql (from webcourses). 2. Normalize the following Apps_NOT_Normalized table respecting all the assumptions listed below 3. Create the normalized tables with sql developer and move data into the new tables 4. The normalized tables are usually more storage-efficient. What is the gain in storage efficiency (=the size in bytes of the normalized tables divided by the size of the starting non normalized table)?
-
-<b><u>(In order to estimate the size of the table, assume that a varchar(X) has a size of X bytes, a date has a size of 8 bytes, an integer has a size of 4 bytes and a number(2) has a size of 4 bytes).
-
-<b><u>Table Apps_NOT_Normalized:
-
-<b><u>The following data describes information stored about students applying to a graduate school. Initially they are stored in one single table with no data normalization.
-
-<b><u>Application-No + StudentID+ StudentName + Street + State + Zip-Code + ApplicYear + Reference-Name + RefInstitution + Reference-Statement + PriorSchool-Id + Prior-School-Addr + GPA
-
-<b><u>The table contains information about the application number (unique for each year), the student ID and name, the student address (street, state, Zip-Code) the year of the application, the name of one or more referees, their institutions and the reference statement written by each referee (so one reference statement for each referee for a specific application), and a list of prior schools the student attended. For each prior school the DB stores the address and the GPA (final score obtained by the student in that school).
-
-<b><u>Assume the following: · Applications are submitted for each year, applications numbers are reset every year and therefore they are unique only inside each year.
-
-* <b><u>Student ID is unique for all the years (is assigned once for all once the student submit her/his first application)
-
-
-* <b><u>A student might move to another address and the database has to store all the students addresses
-
-
-* <b><u>An applicant can only apply once during each year.
-
-
-* <b><u>Reference-Name and RefInstitution together are unique (but are not unique as separate attributes).
-
-
-* <b><u>Prior-School-Id uniquely identifies a university or college.
-
-
-* <b><u>A student might have many prior-schools and if she/he sends an applications in different years, it might have added a new prior school (therefore prior school lists might change across applications).
-
-
-* <b><u>An applicant has only one GPA from any specific prior school.
-
-
-* <b><u>For each application there could be one or more referees
-
-
-* <b><u>Referees may write a reference statement for more than one applicants.
-
-
-* <b><u>However, the reference statement for different applicants is different.
-
-
-* <b><u>Reference statements are attached to an application. If a student submit a second application, the reference statements (even from the same referee) could be different.
-
 UNF
 
 ![2](images/2.jpg)
@@ -110,11 +62,13 @@ UNF
 
 3NF
 
-![5](images/6.jpg)
+![5](images/8.jpg)
 
 ---
 
 <b> Sql Code:
+
+table creations
 
 ```sql
 CREATE TABLE EducationInstitute
@@ -133,28 +87,37 @@ CREATE TABLE Referee
 
 CREATE TABLE RefereeInstitute
 (
+  RefIntId             integer NOT NULL,
 	RefereeId            integer NOT NULL,
 	InstituteId             integer NULL,
-	PRIMARY KEY (RefereeId),
 	CONSTRAINT R_3 FOREIGN KEY (RefereeId) REFERENCES Referee (RefereeId),
 	CONSTRAINT R_4 FOREIGN KEY (InstituteId) REFERENCES EducationInstitute (InstituteId)
 );
 
-CREATE TABLE Zip
+CREATE TABLE Address
 (
-	ZipCode              varchar(7) NOT NULL,
+  AdderssId            integer NOT NULL,
+	ZipCode              varchar(7)  NULL,
 	Street               varchar(30) NULL,
 	State                varchar(30) NULL,
-	PRIMARY KEY (ZipCode)
+	PRIMARY KEY (AdderssId)
 );
 
 CREATE TABLE Student
 (
 	StudentId            integer NOT NULL,
 	StudentName          varchar(50) NULL,
-	ZipCode              varchar(7) NULL,
-	PRIMARY KEY (StudentId),
-	CONSTRAINT R_1 FOREIGN KEY (ZipCode) REFERENCES Zip (ZipCode)
+	PRIMARY KEY (StudentId)
+);
+
+CREATE TABLE StudentAddress
+(
+  StuAddId            integer NOT NULL,
+  StudentId           integer NULL,
+  AdderssId             integer NULL,
+  PRIMARY KEY (StuAddId),
+  CONSTRAINT R_9 FOREIGN KEY (StudentId) REFERENCES Student (StudentId),
+  CONSTRAINT R_10 FOREIGN KEY (AdderssId) REFERENCES Address (AdderssId)
 );
 
 CREATE TABLE Reference
@@ -162,18 +125,20 @@ CREATE TABLE Reference
 	ReferenceId          integer NOT NULL,
 	ReferenceStatement   varchar(500) NULL,
 	RefereeId            integer NULL,
-	PRIMARY KEY (ReferenceId)
+	PRIMARY KEY (ReferenceId),
+  CONSTRAINT R_11 FOREIGN KEY (RefereeId) REFERENCES Referee (RefereeId)
 );
 
 CREATE TABLE Application
 (
-	ApplicationNumber    integer NOT NULL,
+  ApplciationId        integer NOT NULL,
+	ApplicationNumber    integer NULL,
 	StudentId            integer NULL,
 	AppYear              integer NULL,
 	ReferenceId          integer NULL,
 	PriorInstituteId     integer NULL,
 	GPA                  number(2) NULL,
-	PRIMARY KEY (ApplicationNumber),
+	PRIMARY KEY (ApplciationId),
 	CONSTRAINT R_6 FOREIGN KEY (StudentId) REFERENCES Student (StudentId),
 	CONSTRAINT R_7 FOREIGN KEY (ReferenceId) REFERENCES Reference (ReferenceId),
 	CONSTRAINT R_8 FOREIGN KEY (PriorInstituteId) REFERENCES EducationInstitute (InstituteId)
@@ -183,4 +148,106 @@ CREATE TABLE Application
 
 And the Inserts
 
-test
+``` sql
+insert into Address values(1, 'NY234', 'Grafton Street', 'New York');
+insert into Address values(2, 'Flo435', 'White Street', 'Flordia');
+insert into Address values(3, 'Cal123', 'Green Road', 'California');
+insert into Address values(4, 'Ca455', 'Red Crescent', 'California');
+insert into Address values(5, 'Mex1', 'Yellow', 'Mexico');
+insert into Address values(6, 'Oh34', 'Dartry Road', 'Ohio');
+insert into Address values(7, 'IRE', 'Malahide Road', 'Ireland');
+insert into Address values(8, 'Kan45', 'Black Bay', 'Kansas');
+insert into Address values(9, 'Kan45', 'River Road', 'Kansas');
+
+insert into EducationInstitute values(1, 'Castleknock');
+insert into EducationInstitute values(2, 'Loreto College');
+insert into EducationInstitute values(3, 'St.Patrick');
+insert into EducationInstitute values(4, 'DBS');
+insert into EducationInstitute values(5, 'Harvard');
+insert into EducationInstitute values(6, 'Trinity College');
+insert into EducationInstitute values(7, 'U Limerick');
+insert into EducationInstitute values(8, 'DIT');
+insert into EducationInstitute values(9, 'UCD');
+insert into EducationInstitute values(10, 'UCC');
+
+insert into Student values(1, 'Mark');
+insert into Student values(2, 'Sarah');
+insert into Student values(3, 'Paul');
+insert into Student values(4, 'Jack');
+insert into Student values(5, 'Mary');
+insert into Student values(6, 'Susan');
+
+insert into StudentAddress values(1, 1, 1);
+insert into StudentAddress values(2, 1, 2);
+insert into StudentAddress values(3, 2, 3);
+insert into StudentAddress values(4, 3, 4);
+insert into StudentAddress values(5, 3, 5);
+insert into StudentAddress values(6, 4, 6);
+insert into StudentAddress values(7, 5, 7);
+insert into StudentAddress values(8, 5, 8);
+insert into StudentAddress values(9, 6, 9);
+
+insert into Referee values(1, 'Dr. Jones');
+insert into Referee values(2, 'Dr. Bryne');
+insert into Referee values(3, 'Prof. Cahill');
+insert into Referee values(4, 'Prof. Lillis');
+
+insert into Reference values(1, 'Good guy', 1);
+insert into Reference values(2, 'Very Good guy', 1);
+insert into Reference values(3, 'Perfect', 2);
+insert into Reference values(4, 'Average', 2);
+insert into Reference values(5, 'Poor', 1);
+insert into Reference values(6, 'Excellent', 3);
+insert into Reference values(7, 'Fair', 4);
+insert into Reference values(8, 'Good girl', 4);
+insert into Reference values(9, 'Messy', 3);
+
+insert into RefereeInstitute values(1, 1, 6);
+insert into RefereeInstitute values(2, 1, 7);
+insert into RefereeInstitute values(3, 2, 8);
+insert into RefereeInstitute values(4, 2, 9);
+insert into RefereeInstitute values(5, 3, 10);
+insert into RefereeInstitute values(6, 4, 8);
+
+insert into Application values(1,1,1,2003,1,1,65);
+insert into Application values(2,1,1,2004,1,1,65);
+insert into Application values(3,2,1,2007,1,1,65);
+insert into Application values(4,2,1,2007,1,2,87);
+insert into Application values(5,3,1,2012,1,1,65);
+insert into Application values(6,3,1,2012,1,2,87);
+
+insert into Application values(7,2,2,2010,3,1,90);
+insert into Application values(8,2,2,2010,3,2,76);
+insert into Application values(9,2,2,2011,3,2,90);
+insert into Application values(10,2,2,2011,3,2,76);
+insert into Application values(11,2,2,2012,4,2,90);
+insert into Application values(12,2,2,2012,4,2,76);
+insert into Application values(13,2,2,2012,4,2,66);
+insert into Application values(14,2,2,2012,4,2,45);
+
+insert into Application values(15,1,3,2012,5,1,45);
+insert into Application values(16,1,3,2012,5,3,67);
+insert into Application values(17,1,3,2012,5,4,23);
+insert into Application values(18,1,3,2012,5,5,67);
+insert into Application values(19,3,3,2008,6,1,45);
+insert into Application values(20,3,3,2008,6,3,67);
+insert into Application values(21,3,3,2008,6,4,23);
+insert into Application values(22,3,3,2008,6,5,67);
+
+insert into Application values(23,1,4,2009,7,3,29);
+insert into Application values(24,1,4,2009,7,4,88);
+insert into Application values(25,1,4,2009,7,5,66);
+
+insert into Application values(26,2,5,2009,8,3,44);
+insert into Application values(27,2,5,2009,8,4,55);
+insert into Application values(28,2,5,2009,8,5,66);
+insert into Application values(29,2,5,2009,8,1,74);
+insert into Application values(30,1,5,2005,3,3,44);
+insert into Application values(31,1,5,2005,3,4,55);
+insert into Application values(32,1,5,2005,3,5,66);
+
+insert into Application values(33,3,6,2011,9,1,88);
+insert into Application values(34,3,6,2011,9,3,77);
+insert into Application values(35,3,6,2011,9,4,56);
+insert into Application values(36,3,6,2011,9,2,45);
+	```
