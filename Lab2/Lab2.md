@@ -1,44 +1,24 @@
 ## Exercise 1
 
-<b><u>The Gill Art Gallery wishes to maintain data on their customers, artists and paintings. They may have several paintings by each artist in the gallery at one time. Paintings may be bought and sold several times. In other words, the gallery may sell a painting, then buy it back at a later date and sell it to another or the same customer (but one transaction per painting per day!).
-
-<b><u>Produce a 1NF, 2NF, 3NF to store the data of the following form. The form contains all the paintings sold by the gallery to its customers (it does not contain the paintings that were bought by the gallery)
-
-
-
 UNF
----
+
 
 ![1](images/1.jpg)
 
 1NF
----
+
 
 ![Exercise1_1](images/exercise1_1.png)
 
 2NF
----
 
-**Customer**
-(<u>customer_id</u>, name, phone, address1, address2, zipcode)
 
-**Purchases**
-(<u>purchases_id</u>, <u>painting_code</u>, <u>purchases_code</u>, painting_title, artist, purchase_date, sales_price)
+![11](images/11.jpg)
 
 3NF
-----
 
-**Customer**
-(<u>customer_id</u>, name, phone, address1, address2, zipcode)
 
-**Artist**
-(<u>artist_code</u>, name)
-
-**Painting**
-(<u>painting_code</u>, title)
-
-**Purchases**
-(<u>purchases_id</u>, <u>artist_code</u>, <u>painting_code</u>, sales_price purchase_date, customer_id)
+![12](images/12.jpg)
 
 ## Exercise 2
 
@@ -58,4 +38,42 @@ UNF
 
 ![5](images/10.jpg)
 
----
+#### Storage Effiency:
+
+<b>Unnormalised:
+
+(4 + 4 + 50 + 100 + 30 + 7 + 4 + 100 + 100 + 500 + 4 + 100 + 4) *36 = <u>1007</u>
+
+<b>Normalised:
+
+Education Institute:
+(4+100) * 10 = <u>1040</u>
+
+Referee
+(4 + 50) * 4 = <u>208</u>
+
+RefreeInstitute:
+(4 + 4 + 4) * 6  = <u>72</u>
+
+Address:
+(4 + 7 + 30 + 100) * = <u>1128</u>
+
+Student:
+(4 + 50) * 6 = <u>324</u>
+
+Application:
+(4 + 4 + 4 + 4 + 4 + 4 + 4) * 36 = <u>1008</u>
+
+Reference:
+(4 + 500) * 9 = <u>4536</u>
+
+StudentAddress:
+(4 + 4 + 4) * 9 = <u>108</u>
+
+Total Normalised
+
+1040 + 1008 + 208 + 4536 + 72 + 108 + 1128 + 324 = <u>8424</u>
+
+<b>Gain in Storage Efficiency</b>
+
+26252/8424 * 100 = <b><u>418%</b></u> Increase in Efficiency
