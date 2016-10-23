@@ -29,3 +29,32 @@ insert into TEAMS values(6, 'Real Madrid', 'Spain');
 insert into TEAMS values(7, 'Getafe', 'Spain');
 insert into TEAMS values(8, 'Sevilla', 'Spain');
 
+create table log_teams (
+  logID integer,
+  teamID integer,
+  insertDate date,
+  PRIMARY KEY(logID, teamID),
+  foreign key (TeamID) references Teams(TeamID)
+);
+
+CREATE OR REPLACE TRIGGER
+  LOG_DATE
+  AFTER INSERT
+    ON TEAMS
+    FOR EACH ROW
+
+    BEGIN
+      insert into LOG_TEAM
+        (TeamID, insertDate) values (:new.teamID, CURRENT_TIMESTAMP);
+END;
+
+CREATE OR REPLACE TRIGGER
+  LOG_DATE
+  BEFORE INSERT
+    ON MATCHES
+    FOR EACH ROW
+
+    BEGIN
+      insert into LOG_TEAM
+        (TeamID, insertDate) values (:new.teamID, CURRENT_TIMESTAMP);
+END;
