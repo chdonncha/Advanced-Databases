@@ -103,6 +103,7 @@ first RAID 0 then RAID 1
 ---
 #### 2.
 
+Couldn't figure out how to answer
 
 ---
 ### B-Trees

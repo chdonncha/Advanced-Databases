@@ -1,29 +1,3 @@
-## Exercise 1
-
-UNF
-
-
-![1](images/1.jpg)
-
-1NF
-
-first we remove any repeating groups to move it into 1nf
-
-![Exercise1_1](images/exercise1_1.png)
-![9](images/9.jpg)
-
-2NF
-
-as 1nf appears to be 2 tables sqashed into one we seperate them into customer and purchases tables and give primary keys to them both, reducing dependencies
-
-![11](images/11.jpg)
-
-3NF
-
-relationships are establisehd and tables are further broken down, ensuring there is no repeating data or tables
-
-![12](images/12.jpg)
-
 ## Exercise 2
 
 UNF
