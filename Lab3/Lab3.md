@@ -7,15 +7,6 @@
 * <u>2</u> have transfer rate: <u>500</u> <u>Mbits/sec</u>
 * The DB has a stable size of <u>750GB</u>
 
-Show how to implement different level of RAID (0,1,3,5,10,0+1)
-and for the ones that can be implemented compute:
-
-<u>1. storage effiency (disk space actually used for data / total disk space used)</u>
-<u>2. The average read access time in an ideal situation (i.e. how many Mbits per second?)</u>
-
-<u>You are not requested to use all the disks, but only the ones
-you need to accommodates your database of 750GB</u>
-
 ---
 
 ##### RAID 0
@@ -111,27 +102,7 @@ first RAID 0 then RAID 1
 
 ---
 #### 2.
-A RAID 4 configuration (parity disk at block level) is composed by 5 disks + the parity disk.
 
-The time for <u>reading</u> a block is <u>1 second</u>, <u>writing</u> <u>5 second.</u>
-The database needs to modify (write):
-
-<b>(a) A data spread over 2 blocks in the same stripe</b>
-
-<u>List all the operations the RAID system is supposed to do to read the data and modify them taking into account the parity block.</u>
-
-<b>(b) Can you do another write operation at the same time you are performing a)?</b>
-
-<b>(c) Can you do another read operation at the same time you are performing a)?</b>
-
-<b>(d) How long does operation (a) take?</b>
-
-Do the same exercise considering RAID 5 (parity block striped).
-Is there a difference?
-
-<u>Assume that each disk has an hardware controller so that it is possible to perform perform parallel read and write from the disks.</u>
-
-<u>Remember that, even if part of the stripe is modified, the parity bit for the stripe has to be recomputed.</u>
 
 ---
 ### B-Trees
