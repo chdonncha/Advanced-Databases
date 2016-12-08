@@ -97,7 +97,7 @@ CREATE OR REPLACE TRIGGER
   end if;
   
   exception
-  ( when Invalid_Competition then
+   when Invalid_Competition then
     dbms_output.put_line('Invalid Competition');
     
   exception

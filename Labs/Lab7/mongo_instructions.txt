@@ -1,0 +1,62 @@
+cd to 
+C:\Program Files\MongoDB\Server\3.2\bin> 
+
+enter command 
+mongod
+
+by default, mongodb server will start at port 
+27017
+
+to connect locally
+mongo localhost:27017/admin 
+
+or with credentials
+mongo -u <studentid> -p <studentid> localhost:27017/admin 
+
+to load a script example:
+load('pop.js')
+
+good way to verify the colleciton has been added:
+show collections
+
+an SQL select * equivlent:
+db.collectionName.find()
+
+or to make the select nicer looking:
+db.collectionName.find().pretty()
+
+an example of using a selector:
+db.nettuts.find({gender: 'f'}); 
+
+a more complicated selector example:
+db.nettuts.find({gender: 'm', $or: [{nationality: 'english'}]}); 
+
+and another selector example:
+db.nettuts.find({gender: 'm', $or: [{nationality: 'english'}, {nationality: 'american'}]});
+
+another example, this time specifying that's it's assending aswell:
+db.nettuts.find({gender: 'm', $or: [{nationality: 'english'}, {nationality: 'american'}]}).sort({nationality: -1});
+
+db.nettuts.find({gender: 'm', $or: [{nationality: 'english'}, {nationality: 'american'}]}).sort({nationality: -1, first: 1}); 
+ 
+if the query is very large and you want to limit the results displayed:
+db.nettuts.find({gender: 'm', $or: [{nationality: 'english'}, {nationality: 'american'}]}).limit(2); 
+
+if you want to do the same as above, except skip over the first 2 enteries:
+db.nettuts.find({gender: 'm', $or: [{nationality: 'english'}, {nationality: 'american'}]}).limit(2).skip(2); 
+
+can update records (note: if $set isn't passed it'll replace the record, rather than update it):
+db.nettuts.update({first: 'james', last: 'caan'}, {$set: {hair_colour: 'brown'}}); 
+
+and then check the updated record:
+db.nettuts.find({first: 'james', last: 'caan'});
+
+example of using a pipeline (the pipeline can be used to output a sequence of functions):
+db.nettuts.aggregate([ { $limit : 5 } ]); 
+
+db.nettuts.aggregate([ { $sort : {first : 1} }, { $limit : 5 } ]); 
+
+db.nettuts.aggregate( [ { $match: { 'age' : { '$gte' : 37 }}}, { $group: { _id: '$nationality', total : { $sum : 1} }}] ); 
+
+The command $out can be used to redirect the output of the aggregation into a collection:
+{$out : “my_collection”}

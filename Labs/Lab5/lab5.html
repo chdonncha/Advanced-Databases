@@ -1,0 +1,863 @@
+<!DOCTYPE html> <html> <head> <title>lab5</title> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">  <style> .markdown-preview-enhanced pre, .markdown-preview-enhanced .host { color: rgb(197, 200, 198); background-color: rgb(29, 31, 33); }
+.markdown-preview-enhanced pre .invisible-character, .markdown-preview-enhanced .host .invisible-character { color: rgba(197, 200, 198, 0.2); }
+.markdown-preview-enhanced pre .indent-guide, .markdown-preview-enhanced .host .indent-guide { color: rgba(197, 200, 198, 0.2); }
+.markdown-preview-enhanced pre .wrap-guide, .markdown-preview-enhanced .host .wrap-guide { background-color: rgba(197, 200, 198, 0.0980392); }
+.markdown-preview-enhanced pre .gutter, .markdown-preview-enhanced .host .gutter { background-color: rgb(41, 44, 47); }
+.markdown-preview-enhanced pre .gutter .cursor-line, .markdown-preview-enhanced .host .gutter .cursor-line { background-color: rgba(255, 255, 255, 0.137255); }
+.markdown-preview-enhanced pre .line-number.cursor-line-no-selection, .markdown-preview-enhanced .host .line-number.cursor-line-no-selection { background-color: rgba(255, 255, 255, 0.137255); }
+.markdown-preview-enhanced pre .gutter .line-number.folded, .markdown-preview-enhanced .host .gutter .line-number.folded, .markdown-preview-enhanced pre .gutter .line-number::after, .markdown-preview-enhanced .host .gutter .line-number::after, .markdown-preview-enhanced pre .fold-marker::after, .markdown-preview-enhanced .host .fold-marker::after { color: rgb(251, 160, 227); }
+.markdown-preview-enhanced pre .invisible, .markdown-preview-enhanced .host .invisible { color: rgb(197, 200, 198); }
+.markdown-preview-enhanced pre .cursor, .markdown-preview-enhanced .host .cursor { border-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced pre .selection .region, .markdown-preview-enhanced .host .selection .region { background-color: rgb(68, 68, 68); }
+.markdown-preview-enhanced pre .source.gfm, .markdown-preview-enhanced .host .source.gfm { color: rgb(153, 153, 153); }
+.markdown-preview-enhanced pre .gfm .markup.heading, .markdown-preview-enhanced .host .gfm .markup.heading { color: rgb(238, 238, 238); }
+.markdown-preview-enhanced pre .gfm .link, .markdown-preview-enhanced .host .gfm .link { color: rgb(85, 85, 85); }
+.markdown-preview-enhanced pre .gfm .variable.list, .markdown-preview-enhanced .host .gfm .variable.list, .markdown-preview-enhanced pre .gfm .support.quote, .markdown-preview-enhanced .host .gfm .support.quote { color: rgb(85, 85, 85); }
+.markdown-preview-enhanced pre .gfm .link .entity, .markdown-preview-enhanced .host .gfm .link .entity { color: rgb(221, 221, 221); }
+.markdown-preview-enhanced pre .gfm .raw, .markdown-preview-enhanced .host .gfm .raw { color: rgb(170, 170, 170); }
+.markdown-preview-enhanced pre .markdown .paragraph, .markdown-preview-enhanced .host .markdown .paragraph { color: rgb(153, 153, 153); }
+.markdown-preview-enhanced pre .markdown .heading, .markdown-preview-enhanced .host .markdown .heading { color: rgb(238, 238, 238); }
+.markdown-preview-enhanced pre .markdown .raw, .markdown-preview-enhanced .host .markdown .raw { color: rgb(170, 170, 170); }
+.markdown-preview-enhanced pre .markdown .link, .markdown-preview-enhanced .host .markdown .link { color: rgb(85, 85, 85); }
+.markdown-preview-enhanced pre .markdown .link .string, .markdown-preview-enhanced .host .markdown .link .string { color: rgb(85, 85, 85); }
+.markdown-preview-enhanced pre .markdown .link .string.title, .markdown-preview-enhanced .host .markdown .link .string.title { color: rgb(221, 221, 221); }
+.markdown-preview-enhanced { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 1.6; color: rgb(197, 200, 198); overflow: initial; margin: 10px 13px; padding: 2em; box-sizing: border-box; word-wrap: break-word; background-color: rgb(29, 31, 33); }
+.markdown-preview-enhanced[data-use-github-style] { color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced > :first-child { margin-top: 0px; }
+.markdown-preview-enhanced[is="space-pen-div"] { width: 100%; margin: 0px; z-index: 999; overflow: scroll; font-size: 16px; display: block; position: absolute; }
+.markdown-preview-enhanced[is="space-pen-div"][data-use-github-style] { }
+.markdown-preview-enhanced[is="space-pen-div"][data-use-github-style] ::-webkit-scrollbar-track { box-shadow: rgba(218, 218, 218, 0.6) 0px 0px 3px inset; background-color: rgb(244, 244, 244); }
+.markdown-preview-enhanced[is="space-pen-div"][data-use-github-style] ::-webkit-scrollbar-thumb { border-radius: 10px; border-color: transparent; background-color: rgb(204, 204, 204); }
+.markdown-preview-enhanced h1, .markdown-preview-enhanced h2, .markdown-preview-enhanced h3, .markdown-preview-enhanced h4, .markdown-preview-enhanced h5, .markdown-preview-enhanced h6 { line-height: 1.2; margin-top: 1em; margin-bottom: 16px; color: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2, .markdown-preview-enhanced[data-use-github-style] h3, .markdown-preview-enhanced[data-use-github-style] h4, .markdown-preview-enhanced[data-use-github-style] h5, .markdown-preview-enhanced[data-use-github-style] h6 { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced h1 { font-size: 2.4em; font-weight: 300; padding-bottom: 0.3em; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(67, 72, 76); }
+.markdown-preview-enhanced h2 { font-size: 1.8em; font-weight: 400; padding-bottom: 0.3em; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(67, 72, 76); }
+.markdown-preview-enhanced h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview-enhanced h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview-enhanced h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview-enhanced h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2 { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(231, 231, 231); }
+.markdown-preview-enhanced strong { color: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] strong { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced del { color: rgb(155, 160, 157); }
+.markdown-preview-enhanced a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview-enhanced a { color: rgb(0, 136, 204); text-decoration: none; }
+.markdown-preview-enhanced a:hover { color: rgb(0, 80, 163); text-decoration: none; }
+.markdown-preview-enhanced img { max-width: 100%; }
+.markdown-preview-enhanced > p { margin-top: 0px; margin-bottom: 16px; word-wrap: break-word; }
+.markdown-preview-enhanced > ul, .markdown-preview-enhanced > ol { margin-bottom: 16px; }
+.markdown-preview-enhanced ul, .markdown-preview-enhanced ol { padding-left: 2em; }
+.markdown-preview-enhanced ul.no-list, .markdown-preview-enhanced ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview-enhanced ul ul, .markdown-preview-enhanced ul ol, .markdown-preview-enhanced ol ol, .markdown-preview-enhanced ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview-enhanced li { margin-bottom: 0px; }
+.markdown-preview-enhanced li.task-list-item { list-style: none; }
+.markdown-preview-enhanced li > p { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview-enhanced .task-list-item-checkbox { margin: 0px 0.2em 0.25em -1.6em; vertical-align: middle; }
+.markdown-preview-enhanced .task-list-item-checkbox:hover { cursor: pointer; }
+.markdown-preview-enhanced blockquote { margin: 16px 0px; font-size: inherit; padding: 0px 15px; color: rgb(155, 160, 157); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(67, 72, 76); }
+.markdown-preview-enhanced blockquote > :first-child { margin-top: 0px; }
+.markdown-preview-enhanced blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview-enhanced[data-use-github-style] blockquote { color: rgb(119, 119, 119); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); }
+.markdown-preview-enhanced hr { height: 4px; margin: 32px 0px; border: 0px none; background-color: rgb(67, 72, 76); }
+.markdown-preview-enhanced[data-use-github-style] hr { background-color: rgb(231, 231, 231); }
+.markdown-preview-enhanced table { margin: 10px 0px 15px; border-collapse: collapse; border-spacing: 0px; display: block; width: 100%; overflow: auto; word-break: keep-all; }
+.markdown-preview-enhanced table th { font-weight: bold; color: rgb(255, 255, 255); }
+.markdown-preview-enhanced table td, .markdown-preview-enhanced table th { border: 1px solid rgb(67, 72, 76); padding: 6px 13px; }
+.markdown-preview-enhanced[data-use-github-style] th { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced[data-use-github-style] td, .markdown-preview-enhanced[data-use-github-style] th { border: 1px solid rgb(221, 221, 221); }
+.markdown-preview-enhanced dl { padding: 0px; }
+.markdown-preview-enhanced dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview-enhanced dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview-enhanced code { font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; color: rgb(255, 255, 255); font-size: 0.85em !important; background-color: rgb(48, 51, 55); }
+.markdown-preview-enhanced[data-use-github-style] code { color: inherit; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview-enhanced pre > code { padding: 0px; margin: 0px; word-break: normal; white-space: pre; border: 0px; font-size: 0.85em !important; background: transparent; }
+.markdown-preview-enhanced .highlight { margin-bottom: 16px; }
+.markdown-preview-enhanced .highlight pre, .markdown-preview-enhanced pre { font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; padding: 16px; overflow: auto; line-height: 1.45; color: rgb(197, 200, 198); border: rgb(67, 72, 76); border-radius: 3px; font-size: 0.85em !important; background-color: rgb(39, 41, 44); }
+.markdown-preview-enhanced .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview-enhanced pre { word-wrap: break-word; white-space: normal; word-break: break-all; }
+.markdown-preview-enhanced pre .section { opacity: 1; }
+.markdown-preview-enhanced pre code, .markdown-preview-enhanced pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview-enhanced pre code::before, .markdown-preview-enhanced pre tt::before, .markdown-preview-enhanced pre code::after, .markdown-preview-enhanced pre tt::after { content: normal; }
+.markdown-preview-enhanced p, .markdown-preview-enhanced blockquote, .markdown-preview-enhanced ul, .markdown-preview-enhanced ol, .markdown-preview-enhanced dl, .markdown-preview-enhanced pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview-enhanced pre.editor-colors { margin: 16px 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(39, 41, 44); }
+.markdown-preview-enhanced kbd { color: rgb(255, 255, 255); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(67, 72, 76) rgb(67, 72, 76) rgb(53, 57, 60); background-color: rgb(48, 51, 55); }
+.markdown-preview-enhanced[data-use-github-style] kbd { color: rgb(51, 51, 51); border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview-enhanced .pagebreak, .markdown-preview-enhanced .newpage { page-break-before: always; }
+@media screen and (min-width: 914px) { 
+  .markdown-preview-enhanced { width: 854px; margin: 10px auto; background: rgb(29, 31, 33); }
+}
+@media screen and (max-width: 400px) { 
+  .markdown-preview-enhanced { font-size: 14px; }
+}
+@media screen and (min-width: 914px) { 
+  .markdown-preview-enhanced[data-use-github-style] { background: rgb(255, 255, 255); }
+}
+@media print { 
+  .markdown-preview-enhanced { background-color: rgb(29, 31, 33); }
+  .markdown-preview-enhanced h1, .markdown-preview-enhanced h2, .markdown-preview-enhanced h3, .markdown-preview-enhanced h4, .markdown-preview-enhanced h5, .markdown-preview-enhanced h6 { color: rgb(255, 255, 255); page-break-after: avoid; }
+  .markdown-preview-enhanced blockquote { color: rgb(155, 160, 157); }
+  .markdown-preview-enhanced table, .markdown-preview-enhanced pre { page-break-inside: avoid; }
+  .markdown-preview-enhanced table { display: table; }
+  .markdown-preview-enhanced img { display: block; max-width: 100%; max-height: 100%; }
+  .markdown-preview-enhanced pre, .markdown-preview-enhanced code { word-wrap: break-word; white-space: normal; }
+}
+@media print { 
+  .markdown-preview-enhanced[data-use-github-style] { background-color: rgb(255, 255, 255); }
+  .markdown-preview-enhanced[data-use-github-style] h1, .markdown-preview-enhanced[data-use-github-style] h2, .markdown-preview-enhanced[data-use-github-style] h3, .markdown-preview-enhanced[data-use-github-style] h4, .markdown-preview-enhanced[data-use-github-style] h5, .markdown-preview-enhanced[data-use-github-style] h6 { color: rgb(34, 34, 34); }
+  .markdown-preview-enhanced[data-use-github-style] blockquote { color: rgb(119, 119, 119); }
+  .markdown-preview-enhanced[data-use-github-style] pre { border: 2px solid rgb(246, 246, 246); }
+}
+.markdown-preview-enhanced .mermaid { margin-bottom: 16px; }
+.markdown-preview-enhanced .mermaid .edgePath .path { stroke: rgb(255, 255, 255); }
+.markdown-preview-enhanced .mermaid .edgePath marker path { fill: rgb(255, 255, 255) !important; opacity: 1 !important; }
+.markdown-preview-enhanced .mermaid line, .markdown-preview-enhanced .mermaid marker { stroke: rgb(255, 255, 255) !important; opacity: 1 !important; }
+.markdown-preview-enhanced .mermaid .messageText { fill: rgb(255, 255, 255); }
+.markdown-preview-enhanced[data-use-github-style] .mermaid .edgePath .path { stroke: rgb(51, 51, 51); }
+.markdown-preview-enhanced[data-use-github-style] .mermaid marker path { fill: rgb(51, 51, 51) !important; opacity: 1 !important; }
+.markdown-preview-enhanced[data-use-github-style] line, .markdown-preview-enhanced[data-use-github-style] marker { stroke: rgb(51, 51, 51) !important; opacity: 1 !important; }
+.markdown-preview-enhanced[data-use-github-style] .messageText { fill: rgb(51, 51, 51); }
+.markdown-preview-enhanced[is="space-pen-div"] .erd { overflow-x: auto; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk { position: relative; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk.hide-chunk { display: block !important; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk:hover .run-all-btn { display: block !important; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk:hover .btn-group { opacity: 1; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .btn-group { position: absolute; right: 0px; top: 0px; padding: 4px; opacity: 0.4; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .btn-group .btn { text-align: center; color: rgb(255, 255, 255); float: right; margin-left: 2px; border-radius: 4px; border-style: none; font-size: 0.8em; background-image: none; background-color: rgb(147, 187, 124); }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .btn-group .btn:hover { cursor: pointer; background-color: rgb(119, 170, 90); }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .btn-group .btn.run-btn { display: block !important; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk.running .run-btn span { display: none; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk.running .run-btn::after { content: "ᕕ(╯°□°)ᕗ"; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk.running .run-btn:hover { cursor: not-allowed; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk .output-div { overflow-x: auto; margin-bottom: 16px; }
+.markdown-preview-enhanced[is="space-pen-div"] .code-chunk pre { cursor: text; }
+.markdown-preview-enhanced:not([is="space-pen-div"]) .code-chunk.hide-chunk pre.editor-colors, .markdown-preview-enhanced:not([is="space-pen-div"]) .code-chunk.hide-chunk .btn-group { display: none; }
+.markdown-preview-enhanced:not([is="space-pen-div"]) .code-chunk.hide-chunk .output-div { display: block; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors, .markdown-preview-enhanced .github-syntax-theme .host { color: rgb(51, 51, 51); background-color: rgb(247, 247, 247); }
+.markdown-preview-enhanced .github-syntax-theme pre { color: rgb(51, 51, 51); background-color: rgb(247, 247, 247); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter, .markdown-preview-enhanced .github-syntax-theme .host .gutter { color: rgb(179, 179, 179); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number.cursor-line, .markdown-preview-enhanced .github-syntax-theme .host .gutter .line-number.cursor-line { color: rgb(77, 77, 77); background-color: rgb(245, 245, 245); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .gutter .line-number.cursor-line-no-selection, .markdown-preview-enhanced .github-syntax-theme .host .gutter .line-number.cursor-line-no-selection { color: rgb(77, 77, 77); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .wrap-guide, .markdown-preview-enhanced .github-syntax-theme .host .wrap-guide { color: rgb(223, 223, 223); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .indent-guide, .markdown-preview-enhanced .github-syntax-theme .host .indent-guide { color: rgb(223, 223, 223); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .invisible-character, .markdown-preview-enhanced .github-syntax-theme .host .invisible-character { color: rgb(223, 223, 223); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .search-results .marker .region, .markdown-preview-enhanced .github-syntax-theme .host .search-results .marker .region { border: rgb(0, 0, 0); background-color: transparent; }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors .search-results .marker.current-result .region, .markdown-preview-enhanced .github-syntax-theme .host .search-results .marker.current-result .region { border: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .cursor, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .cursor { border-color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .selection .region, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .selection .region { background-color: rgba(178, 215, 255, 0.4); }
+.markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .line-number.cursor-line-no-selection, .markdown-preview-enhanced .github-syntax-theme pre.editor-colors.is-focused .line.cursor-line, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .line-number.cursor-line-no-selection, .markdown-preview-enhanced .github-syntax-theme .host(.is-focused) .line.cursor-line { background-color: rgba(240, 240, 240, 0.498039); }
+.markdown-preview-enhanced .github-syntax-theme .comment, .markdown-preview-enhanced .github-syntax-theme .punctuation.comment { color: rgb(176, 176, 176); }
+.markdown-preview-enhanced .github-syntax-theme .string, .markdown-preview-enhanced .github-syntax-theme .string .constant.character.escape { color: rgb(34, 115, 195); }
+.markdown-preview-enhanced .github-syntax-theme .constant.numeric { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .constant.language { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .constant.character, .markdown-preview-enhanced .github-syntax-theme .constant.other.rgb-value { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .constant.numeric.line-number.find-in-files, .markdown-preview-enhanced .github-syntax-theme .constant.numeric.line-number.match.find-in-files { color: rgb(171, 176, 179); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.class { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .entity.other.inherited-class { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .meta.tag.any.html, .markdown-preview-enhanced .github-syntax-theme .meta.tag.block.any.html { color: rgb(171, 176, 179); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.tag { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.function { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name .punctuation.definition.entity.scss, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.id.css, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.id.css .punctuation.definition.entity.css, .markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.class.css .punctuation.definition.entity.css { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation.definition.tag.begin.html, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.tag.end.html, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.tag.html, .markdown-preview-enhanced .github-syntax-theme .meta.tag.block.any.html { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.control { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.operator { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .storage { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .storage.type { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .support.function { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .support.constant { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .support.type, .markdown-preview-enhanced .github-syntax-theme .support.class, .markdown-preview-enhanced .github-syntax-theme .meta.property-name.scss { color: rgb(0, 153, 204); }
+.markdown-preview-enhanced .github-syntax-theme .support.other.variable { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .invalid, .markdown-preview-enhanced .github-syntax-theme .invalid.illegal { color: rgb(248, 248, 248); background-color: rgb(181, 42, 29); }
+.markdown-preview-enhanced .github-syntax-theme .invalid.deprecated { color: rgb(181, 42, 29); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.filename.find-in-files { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .source.css .punctuation.definition.entity, .markdown-preview-enhanced .github-syntax-theme .punctuation.terminator.rule.scss { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .source.css .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced .github-syntax-theme .source.css .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .source.css .meta.value, .markdown-preview-enhanced .github-syntax-theme .source.css .support.constant, .markdown-preview-enhanced .github-syntax-theme .source.css .support.function { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .source.scss .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced .github-syntax-theme .source.scss .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .support.constant.property-value, .markdown-preview-enhanced .github-syntax-theme .source.scss .support.function, .markdown-preview-enhanced .github-syntax-theme .meta.property-value.scss { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .variable, .markdown-preview-enhanced .github-syntax-theme .source.scss .variable, .markdown-preview-enhanced .github-syntax-theme .variable.interpolation.scss, .markdown-preview-enhanced .github-syntax-theme .source.scss .meta.set.variable { color: rgb(222, 104, 173); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.control.else.scss, .markdown-preview-enhanced .github-syntax-theme .keyword.control.if.scss, .markdown-preview-enhanced .github-syntax-theme .keyword.control.content.scss { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.other.unit { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .keyword.other.important { color: rgb(235, 69, 53); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.tag.reference.scss { color: rgb(181, 127, 0); }
+.markdown-preview-enhanced .github-syntax-theme .entity.name.type.new.js { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .variable.language.js { color: rgb(238, 106, 66); }
+.markdown-preview-enhanced .github-syntax-theme .variable.parameter.function { color: rgb(181, 127, 0); }
+.markdown-preview-enhanced .github-syntax-theme .source.js .meta.function .entity.name.function, .markdown-preview-enhanced .github-syntax-theme .source.js .entity.name.function .meta.function { color: rgb(133, 103, 181); }
+.markdown-preview-enhanced .github-syntax-theme .source.php .entity.name.type.class { color: rgb(238, 106, 66); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation.definition.heading.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.italic.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.bold.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.string.begin.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.string.end.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.metadata.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.link.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.blockquote.markdown, .markdown-preview-enhanced .github-syntax-theme .punctuation.definition.raw.markdown { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation.section.function.scss { color: rgb(99, 163, 92); }
+.markdown-preview-enhanced .github-syntax-theme .punctuation, .markdown-preview-enhanced .github-syntax-theme .meta.method-call, .markdown-preview-enhanced .github-syntax-theme .meta.method { color: rgb(51, 51, 51); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .meta.separator { color: rgb(179, 179, 179); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.raw.block { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.raw.inline { color: rgb(0, 0, 0); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .meta.link, .markdown-preview-enhanced .github-syntax-theme .text.html.markdown .meta.image { color: rgb(65, 131, 196); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.underline.link, .markdown-preview-enhanced .github-syntax-theme .text.html.markdown .constant.other.reference { font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.list { color: rgb(238, 106, 66); }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.bold { font-weight: bold; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.italic { font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.bold .markup.italic { font-weight: bold; font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .text.html.markdown .markup.italic .markup.bold { font-weight: bold; font-style: italic; }
+.markdown-preview-enhanced .github-syntax-theme .string.quoted.double.html .invalid.illegal.bad-ampersand.html { color: rgb(34, 115, 195); background-color: rgb(255, 255, 255); }
+.markdown-preview-enhanced .github-syntax-theme .bracket-matcher .region { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgba(240, 192, 0, 0.8); z-index: 100; background-color: rgba(255, 214, 51, 0.0980392); }
+.markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular { color: rgb(34, 115, 195); }
+.markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular .punctuation.definition.block.begin.angular, .markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular .punctuation.definition.block.end.angular, .markdown-preview-enhanced .github-syntax-theme .meta.tag.template.angular .meta.brace.curly.js { color: rgb(173, 28, 93); }
+.markdown-preview-enhanced .github-syntax-theme .entity.other.attribute-name.html.angular, .markdown-preview-enhanced .github-syntax-theme .meta.attribute.html.angular { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors, .markdown-preview-enhanced[data-use-github-syntax-theme] .host { color: rgb(51, 51, 51) !important; background-color: rgb(247, 247, 247) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre { color: rgb(51, 51, 51) !important; background-color: rgb(247, 247, 247) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .gutter { color: rgb(179, 179, 179) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number.cursor-line, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .gutter .line-number.cursor-line { color: rgb(77, 77, 77) !important; background-color: rgb(245, 245, 245) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .gutter .line-number.cursor-line-no-selection, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .gutter .line-number.cursor-line-no-selection { color: rgb(77, 77, 77) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .wrap-guide, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .wrap-guide { color: rgb(223, 223, 223) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .indent-guide, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .indent-guide { color: rgb(223, 223, 223) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .invisible-character, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .invisible-character { color: rgb(223, 223, 223) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .search-results .marker .region, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .search-results .marker .region { border: rgb(0, 0, 0) !important; background-color: transparent !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors .search-results .marker.current-result .region, .markdown-preview-enhanced[data-use-github-syntax-theme] .host .search-results .marker.current-result .region { border: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .cursor, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .cursor { border-color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .selection .region, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .selection .region { background-color: rgba(178, 215, 255, 0.4) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .line-number.cursor-line-no-selection, .markdown-preview-enhanced[data-use-github-syntax-theme] pre.editor-colors.is-focused .line.cursor-line, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .line-number.cursor-line-no-selection, .markdown-preview-enhanced[data-use-github-syntax-theme] .host(.is-focused) .line.cursor-line { background-color: rgba(240, 240, 240, 0.498039) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .comment, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.comment { color: rgb(176, 176, 176) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .string, .markdown-preview-enhanced[data-use-github-syntax-theme] .string .constant.character.escape { color: rgb(34, 115, 195) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.numeric { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.language { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.character, .markdown-preview-enhanced[data-use-github-syntax-theme] .constant.other.rgb-value { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .constant.numeric.line-number.find-in-files, .markdown-preview-enhanced[data-use-github-syntax-theme] .constant.numeric.line-number.match.find-in-files { color: rgb(171, 176, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.class { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.inherited-class { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.any.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.block.any.html { color: rgb(171, 176, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.tag { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.function { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name .punctuation.definition.entity.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.id.css, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.id.css .punctuation.definition.entity.css, .markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.class.css .punctuation.definition.entity.css { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.tag.begin.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.tag.end.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.tag.html, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.block.any.html { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.operator { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .storage { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .storage.type { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.function { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.constant { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.type, .markdown-preview-enhanced[data-use-github-syntax-theme] .support.class, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.property-name.scss { color: rgb(0, 153, 204) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.other.variable { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .invalid, .markdown-preview-enhanced[data-use-github-syntax-theme] .invalid.illegal { color: rgb(248, 248, 248) !important; background-color: rgb(181, 42, 29) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .invalid.deprecated { color: rgb(181, 42, 29) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.filename.find-in-files { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .punctuation.definition.entity, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.terminator.rule.scss { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .meta.value, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .support.constant, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.css .support.function { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .entity.other.attribute-name.pseudo-class, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .entity.other.attribute-name.pseudo-element { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .support.constant.property-value, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .support.function, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.property-value.scss { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .variable, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .variable, .markdown-preview-enhanced[data-use-github-syntax-theme] .variable.interpolation.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.scss .meta.set.variable { color: rgb(222, 104, 173) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control.else.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control.if.scss, .markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.control.content.scss { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.other.unit { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .keyword.other.important { color: rgb(235, 69, 53) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.tag.reference.scss { color: rgb(181, 127, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.name.type.new.js { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .variable.language.js { color: rgb(238, 106, 66) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .variable.parameter.function { color: rgb(181, 127, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.js .meta.function .entity.name.function, .markdown-preview-enhanced[data-use-github-syntax-theme] .source.js .entity.name.function .meta.function { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .source.php .entity.name.type.class { color: rgb(238, 106, 66) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.heading.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.italic.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.bold.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.string.begin.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.string.end.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.metadata.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.link.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.blockquote.markdown, .markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.definition.raw.markdown { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation.section.function.scss { color: rgb(99, 163, 92) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .punctuation, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.method-call, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.method { color: rgb(51, 51, 51) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .meta.separator { color: rgb(179, 179, 179) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.raw.block { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.raw.inline { color: rgb(0, 0, 0) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .meta.link, .markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .meta.image { color: rgb(65, 131, 196) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.underline.link, .markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .constant.other.reference { font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.list { color: rgb(238, 106, 66) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.bold { font-weight: bold !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.italic { font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.bold .markup.italic { font-weight: bold !important; font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .text.html.markdown .markup.italic .markup.bold { font-weight: bold !important; font-style: italic !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .string.quoted.double.html .invalid.illegal.bad-ampersand.html { color: rgb(34, 115, 195) !important; background-color: rgb(255, 255, 255) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .bracket-matcher .region { border-bottom-width: 1px !important; border-bottom-style: solid !important; border-bottom-color: rgba(240, 192, 0, 0.8) !important; z-index: 100 !important; background-color: rgba(255, 214, 51, 0.0980392) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular { color: rgb(34, 115, 195) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular .punctuation.definition.block.begin.angular, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular .punctuation.definition.block.end.angular, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.tag.template.angular .meta.brace.curly.js { color: rgb(173, 28, 93) !important; }
+.markdown-preview-enhanced[data-use-github-syntax-theme] .entity.other.attribute-name.html.angular, .markdown-preview-enhanced[data-use-github-syntax-theme] .meta.attribute.html.angular { color: rgb(133, 103, 181) !important; }
+.markdown-preview-enhanced[data-presentation-mode] { font-size: 24px; width: 100%; box-sizing: border-box; margin: 0px; padding: 0px; }
+.markdown-preview-enhanced[data-presentation-mode] h1, .markdown-preview-enhanced[data-presentation-mode] h2, .markdown-preview-enhanced[data-presentation-mode] h3, .markdown-preview-enhanced[data-presentation-mode] h4, .markdown-preview-enhanced[data-presentation-mode] h5, .markdown-preview-enhanced[data-presentation-mode] h6 { margin-top: 0px; }
+.markdown-preview-enhanced[data-presentation-mode] strong { font-weight: bold; }
+.markdown-preview-enhanced[data-presentation-mode]::-webkit-scrollbar { display: none; }
+.markdown-preview-enhanced .slides { text-align: left !important; }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+
+pre.editor-colors,
+.host {
+  background-color: #1d1f21;
+  color: #c5c8c6;
+}
+pre.editor-colors .invisible-character,
+.host .invisible-character {
+  color: rgba(197, 200, 198, 0.2);
+}
+pre.editor-colors .indent-guide,
+.host .indent-guide {
+  color: rgba(197, 200, 198, 0.2);
+}
+pre.editor-colors .wrap-guide,
+.host .wrap-guide {
+  background-color: rgba(197, 200, 198, 0.1);
+}
+pre.editor-colors .gutter,
+.host .gutter {
+  background-color: #292c2f;
+}
+pre.editor-colors .gutter .cursor-line,
+.host .gutter .cursor-line {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+pre.editor-colors .line-number.cursor-line-no-selection,
+.host .line-number.cursor-line-no-selection {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+pre.editor-colors .gutter .line-number.folded,
+.host .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+.host .gutter .line-number:after,
+pre.editor-colors .fold-marker:after,
+.host .fold-marker:after {
+  color: #fba0e3;
+}
+pre.editor-colors .invisible,
+.host .invisible {
+  color: #c5c8c6;
+}
+pre.editor-colors .cursor,
+.host .cursor {
+  border-color: #ffffff;
+}
+pre.editor-colors .selection .region,
+.host .selection .region {
+  background-color: #444444;
+}
+pre.editor-colors .source.gfm,
+.host .source.gfm {
+  color: #999;
+}
+pre.editor-colors .gfm .markup.heading,
+.host .gfm .markup.heading {
+  color: #eee;
+}
+pre.editor-colors .gfm .link,
+.host .gfm .link {
+  color: #555;
+}
+pre.editor-colors .gfm .variable.list,
+.host .gfm .variable.list,
+pre.editor-colors .gfm .support.quote,
+.host .gfm .support.quote {
+  color: #555;
+}
+pre.editor-colors .gfm .link .entity,
+.host .gfm .link .entity {
+  color: #ddd;
+}
+pre.editor-colors .gfm .raw,
+.host .gfm .raw {
+  color: #aaa;
+}
+pre.editor-colors .markdown .paragraph,
+.host .markdown .paragraph {
+  color: #999;
+}
+pre.editor-colors .markdown .heading,
+.host .markdown .heading {
+  color: #eee;
+}
+pre.editor-colors .markdown .raw,
+.host .markdown .raw {
+  color: #aaa;
+}
+pre.editor-colors .markdown .link,
+.host .markdown .link {
+  color: #555;
+}
+pre.editor-colors .markdown .link .string,
+.host .markdown .link .string {
+  color: #555;
+}
+pre.editor-colors .markdown .link .string.title,
+.host .markdown .link .string.title {
+  color: #ddd;
+}
+.bracket-matcher .region {
+  border-bottom: 1px solid #f8de7e;
+  margin-top: -1px;
+  opacity: .7;
+}
+.comment {
+  color: #7C7C7C;
+}
+.entity {
+  color: #FFD2A7;
+}
+.entity.name.type {
+  text-decoration: underline;
+  color: #FFFFB6;
+}
+.entity.other.inherited-class {
+  color: #9B5C2E;
+}
+.keyword {
+  color: #96CBFE;
+}
+.keyword.control {
+  color: #96CBFE;
+}
+.keyword.operator {
+  color: #EDEDED;
+}
+.storage {
+  color: #CFCB90;
+}
+.storage.modifier {
+  color: #96CBFE;
+}
+.constant {
+  color: #99CC99;
+}
+.constant.numeric {
+  color: #FF73FD;
+}
+.variable {
+  color: #C6C5FE;
+}
+.invalid.deprecated {
+  text-decoration: underline;
+  color: #FD5FF1;
+}
+.invalid.illegal {
+  color: #FD5FF1;
+  background-color: rgba(86, 45, 86, 0.75);
+}
+.string .source,
+.string .meta.embedded.line {
+  color: #EDEDED;
+}
+.string .punctuation.section.embedded {
+  color: #00A0A0;
+}
+.string .punctuation.section.embedded .source {
+  color: #00A0A0;
+}
+.string {
+  color: #A8FF60;
+}
+.string .constant {
+  color: #00A0A0;
+}
+.string.regexp {
+  color: #E9C062;
+}
+.string.regexp .constant.character.escape,
+.string.regexp .source.ruby.embedded,
+.string.regexp .string.regexp.arbitrary-repetition {
+  color: #FF8000;
+}
+.string.regexp.group {
+  color: #C6A24F;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.string.regexp.character-class {
+  color: #B18A3D;
+}
+.string .variable {
+  color: #8A9A95;
+}
+.support {
+  color: #FFFFB6;
+}
+.support.function {
+  color: #DAD085;
+}
+.support.constant {
+  color: #FFD2A7;
+}
+.support.type.property-name.css {
+  color: #EDEDED;
+}
+.source .entity.name.tag,
+.source .punctuation.tag {
+  color: #96CBFE;
+}
+.source .entity.other.attribute-name {
+  color: #C6C5FE;
+}
+.entity.other.attribute-name {
+  color: #C6C5FE;
+}
+.entity.name.tag.namespace,
+.entity.other.attribute-name.namespace {
+  color: #E18964;
+}
+.meta.preprocessor.c {
+  color: #8996A8;
+}
+.meta.preprocessor.c .keyword {
+  color: #AFC4DB;
+}
+.meta.cast {
+  color: #676767;
+}
+.meta.sgml.html .meta.doctype,
+.meta.sgml.html .meta.doctype .entity,
+.meta.sgml.html .meta.doctype .string,
+.meta.xml-processing,
+.meta.xml-processing .entity,
+.meta.xml-processing .string {
+  color: #494949;
+}
+.meta.tag .entity,
+.meta.tag > .punctuation,
+.meta.tag.inline .entity {
+  color: #C6C5FE;
+}
+.meta.tag .name,
+.meta.tag.inline .name,
+.meta.tag > .punctuation {
+  color: #96CBFE;
+}
+.meta.selector.css .entity.name.tag {
+  text-decoration: underline;
+  color: #96CBFE;
+}
+.meta.selector.css .entity.other.attribute-name.tag.pseudo-class {
+  color: #8F9D6A;
+}
+.meta.selector.css .entity.other.attribute-name.id {
+  color: #8B98AB;
+}
+.meta.selector.css .entity.other.attribute-name.class {
+  color: #62B1FE;
+}
+.meta.property-group .support.constant.property-value.css,
+.meta.property-value .support.constant.property-value.css {
+  color: #F9EE98;
+}
+.meta.preprocessor.at-rule .keyword.control.at-rule {
+  color: #8693A5;
+}
+.meta.property-value .support.constant.named-color.css,
+.meta.property-value .constant {
+  color: #87C38A;
+}
+.meta.constructor.argument.css {
+  color: #8F9D6A;
+}
+.meta.diff,
+.meta.diff.header {
+  color: #F8F8F8;
+  background-color: #0E2231;
+}
+.meta.separator {
+  color: #60A633;
+  background-color: #242424;
+}
+.meta.line.entry.logfile,
+.meta.line.exit.logfile {
+  background-color: rgba(238, 238, 238, 0.16);
+}
+.meta.line.error.logfile {
+  background-color: #751012;
+}
+ /* Flowchart variables */
+/* Sequence Diagram variables */
+/* Gantt chart variables */
+.mermaid .label {
+  color: #323D47;
+}
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon {
+  fill: #BDD5EA;
+  stroke: #81B1DB;
+  stroke-width: 1px;
+}
+.mermaid .edgePath .path {
+  stroke: lightgrey;
+}
+.mermaid .edgeLabel {
+  background-color: #e8e8e8;
+}
+.mermaid .cluster rect {
+  fill: #6D6D65 !important;
+  rx: 4 !important;
+  stroke: rgba(255, 255, 255, 0.25) !important;
+  stroke-width: 1px !important;
+}
+.mermaid .cluster text {
+  fill: #F9FFFE;
+}
+.mermaid .actor {
+  stroke: #81B1DB;
+  fill: #BDD5EA;
+}
+.mermaid text.actor {
+  fill: black;
+  stroke: none;
+}
+.mermaid .actor-line {
+  stroke: lightgrey;
+}
+.mermaid .messageLine0 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  marker-end: "url(#arrowhead)";
+  stroke: lightgrey;
+}
+.mermaid .messageLine1 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  stroke: lightgrey;
+}
+.mermaid #arrowhead {
+  fill: lightgrey !important;
+}
+.mermaid #crosshead path {
+  fill: lightgrey !important;
+  stroke: lightgrey !important;
+}
+.mermaid .messageText {
+  fill: lightgrey;
+  stroke: none;
+}
+.mermaid .labelBox {
+  stroke: #81B1DB;
+  fill: #BDD5EA;
+}
+.mermaid .labelText {
+  fill: #323D47;
+  stroke: none;
+}
+.mermaid .loopText {
+  fill: lightgrey;
+  stroke: none;
+}
+.mermaid .loopLine {
+  stroke-width: 2;
+  stroke-dasharray: "2 2";
+  marker-end: "url(#arrowhead)";
+  stroke: #81B1DB;
+}
+.mermaid .note {
+  stroke: rgba(255, 255, 255, 0.25);
+  fill: #fff5ad;
+}
+.mermaid .noteText {
+  fill: black;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+/** Section styling */
+.mermaid .section {
+  stroke: none;
+  opacity: 0.2;
+}
+.mermaid .section0 {
+  fill: rgba(255, 255, 255, 0.3);
+}
+.mermaid .section2 {
+  fill: #EAE8B9;
+}
+.mermaid .section1,
+.mermaid .section3 {
+  fill: white;
+  opacity: 0.2;
+}
+.mermaid .sectionTitle0 {
+  fill: #F9FFFE;
+}
+.mermaid .sectionTitle1 {
+  fill: #F9FFFE;
+}
+.mermaid .sectionTitle2 {
+  fill: #F9FFFE;
+}
+.mermaid .sectionTitle3 {
+  fill: #F9FFFE;
+}
+.mermaid .sectionTitle {
+  text-anchor: start;
+  font-size: 11px;
+  text-height: 14px;
+}
+/* Grid and axis */
+.mermaid .grid .tick {
+  stroke: rgba(255, 255, 255, 0.3);
+  opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+.mermaid .grid .tick text {
+  fill: lightgrey;
+  opacity: 0.5;
+}
+.mermaid .grid path {
+  stroke-width: 0;
+}
+/* Today line */
+.mermaid .today {
+  fill: none;
+  stroke: #DB5757;
+  stroke-width: 2px;
+}
+/* Task styling */
+/* Default task */
+.mermaid .task {
+  stroke-width: 1;
+}
+.mermaid .taskText {
+  text-anchor: middle;
+  font-size: 11px;
+}
+.mermaid .taskTextOutsideRight {
+  fill: #323D47;
+  text-anchor: start;
+  font-size: 11px;
+}
+.mermaid .taskTextOutsideLeft {
+  fill: #323D47;
+  text-anchor: end;
+  font-size: 11px;
+}
+/* Specific task settings for the sections*/
+.mermaid .taskText0,
+.mermaid .taskText1,
+.mermaid .taskText2,
+.mermaid .taskText3 {
+  fill: #323D47;
+}
+.mermaid .task0,
+.mermaid .task1,
+.mermaid .task2,
+.mermaid task3 {
+  fill: #BDD5EA;
+  stroke: rgba(255, 255, 255, 0.5);
+}
+.mermaid .taskTextOutside0,
+.mermaid .taskTextOutside2 {
+  fill: lightgrey;
+}
+.mermaid .taskTextOutside1,
+.mermaid .taskTextOutside3 {
+  fill: lightgrey;
+}
+/* Active task */
+.mermaid .active0,
+.mermaid .active1,
+.mermaid .active2,
+.mermaid .active3 {
+  fill: #81B1DB;
+  stroke: rgba(255, 255, 255, 0.5);
+}
+.mermaid .activeText0,
+.mermaid .activeText1,
+.mermaid .activeText2,
+.mermaid .activeText3 {
+  fill: #323D47 !important;
+}
+/* Completed task */
+.mermaid .done0,
+.mermaid .done1,
+.mermaid .done2,
+.mermaid .done3 {
+  fill: lightgrey;
+}
+.mermaid .doneText0,
+.mermaid .doneText1,
+.mermaid .doneText2,
+.mermaid .doneText3 {
+  fill: #323D47 !important;
+}
+/* Tasks on the critical line */
+.mermaid .crit0,
+.mermaid .crit1,
+.mermaid .crit2,
+.mermaid .crit3 {
+  stroke: #E83737;
+  fill: #E83737;
+  stroke-width: 2;
+}
+.mermaid .activeCrit0,
+.mermaid .activeCrit1,
+.mermaid .activeCrit2,
+.mermaid .activeCrit3 {
+  stroke: #E83737;
+  fill: #81B1DB;
+  stroke-width: 2;
+}
+.mermaid .doneCrit0,
+.mermaid .doneCrit1,
+.mermaid .doneCrit2,
+.mermaid .doneCrit3 {
+  stroke: #E83737;
+  fill: lightgrey;
+  stroke-width: 1;
+  cursor: pointer;
+  shape-rendering: crispEdges;
+}
+.mermaid .doneCritText0,
+.mermaid .doneCritText1,
+.mermaid .doneCritText2,
+.mermaid .doneCritText3 {
+  fill: lightgrey !important;
+}
+.mermaid .activeCritText0,
+.mermaid .activeCritText1,
+.mermaid .activeCritText2,
+.mermaid .activeCritText3 {
+  fill: #323D47 !important;
+}
+.mermaid .titleText {
+  text-anchor: middle;
+  font-size: 18px;
+  fill: lightgrey;
+}
+/*
+
+
+*/
+.mermaid .node text {
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+div.mermaidTooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 200px;
+  padding: 2px;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 12px;
+  background: #6D6D65;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100;
+}
+ </style> <link rel="stylesheet" href="file:///C:\Users\donncha\.atom\packages\markdown-preview-enhanced\node_modules\katex\dist\katex.min.css">  </head> <body class="markdown-preview-enhanced " data-use-github-style data-use-github-syntax-theme > <h2 class="sync-line" data-line="0" id="exercise-1">Exercise 1</h2>
+<p class="sync-line" data-line="2">The data was denormalised so it could be applied to a star schema. The Bank table was eliminated as the bank name could be also stored under the branch dimension.</p>
+<p class="sync-line" data-line="4">As the transaction is assumed to be the facts, I felt it nessessary to move the AccountType in with the Transaction type for convinence.</p>
+<p class="sync-line" data-line="6">The grain levels of the database have been reduced but still are required to cut through a fair amount of data. To reduce grain I could partition the datbase but as mentioned below I chose a balanced hierarchy apporach.</p>
+<p class="sync-line" data-line="8">As for the date dimension, there were two options I could take, partitioning the tables into a day, year, month, quater and year table to allow faster access of data or going with a balanced hierarchy approach. I settled with the balanced hierarachy approach in the end, as it is ideal for storing any date related values. With it all being arranged into in a way which means the further you go into the date table the logical child to the entity is further down the table, with the logical parent being above it. But keeping the full date as a timestamp in the Transaction_Facts table as well.</p>
+<p class="sync-line" data-line="10"><img src="images/8.jpg" alt="1"></p>
+<p class="sync-line" data-line="12">sql select:</p>
+<pre class="editor-colors lang-sql sync-line" data-line="13"><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>select</span></span><span>&nbsp;</span><span class="support function aggregate sql"><span>sum</span></span><span>(</span><span class="constant other database-name sql"><span>t</span></span><span>.</span><span class="constant other table-name sql"><span>Amount</span></span><span>)&nbsp;</span><span class="keyword other alias sql"><span>as</span></span><span>&nbsp;</span><span class="string quoted double sql"><span class="punctuation definition string begin sql"><span>&quot;</span></span><span>Total&nbsp;Amount:&nbsp;</span><span class="punctuation definition string end sql"><span>&quot;</span></span></span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>from</span></span><span>&nbsp;Transaction_Facts&nbsp;t</span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>inner&nbsp;join</span></span><span>&nbsp;date_dimension&nbsp;d</span></span></div><div class="line"><span class="source sql"><span class="keyword other DDL create II sql"><span>on</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>t</span></span><span>.</span><span class="constant other table-name sql"><span>DateID</span></span><span>&nbsp;</span><span class="keyword operator comparison sql"><span>=</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>d</span></span><span>.</span><span class="constant other table-name sql"><span>DateID</span></span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>where</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>t</span></span><span>.</span><span class="constant other table-name sql"><span>Trans_Type</span></span><span>&nbsp;</span><span class="keyword operator comparison sql"><span>=</span></span><span>&nbsp;</span><span class="string quoted single sql"><span class="punctuation definition string begin sql"><span>&#39;</span></span><span>Student</span><span class="punctuation definition string end sql"><span>&#39;</span></span></span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>and</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>d</span></span><span>.</span><span class="constant other table-name sql"><span>year</span></span><span>&nbsp;</span><span class="keyword operator comparison sql"><span>=</span></span><span>&nbsp;</span><span class="string quoted single sql"><span class="punctuation definition string begin sql"><span>&#39;</span></span><span>2009</span><span class="punctuation definition string end sql"><span>&#39;</span></span></span><span>;</span></span></div></pre>
+<h2 class="sync-line" data-line="22" id="exercise-2">Exercise 2</h2>
+<p class="sync-line" data-line="24">This schema is an example of what posting a status on your profile on <b>Facebook</b> might look like.</p>
+<p class="sync-line" data-line="26">This Schema is to offer faster querying of data. Taking a similar approach to the previous schema, the heirarchy approach was chosen for stroring date related entities. All other data has been appropriately parititioned to support faster querying as well.</p>
+<p class="sync-line" data-line="28">The grain levels are very low on this schema with the tables being very small in size avoiding the need to cut through vast amounts of data and speeding up queries, considering on social media there's vast amounts of data stored this is vitial.</p>
+<p class="sync-line" data-line="30">As a checkin is a queried from a list of checkin locations in their database they will have to be unqiue with there not being allowed two different checkins in the same location as the amount of checkins in each location is counted else where.</p>
+<p class="sync-line" data-line="32">For storing feeling in the post_facts this is because the feelings are provided through a predefined list of feelings the user can select when they choose a status and do not need unique id's as the selections are based on the website.</p>
+<p class="sync-line" data-line="34">The media_dimension stores the references to the photo or video file selected, which them being allowed both be null if the user doesn't select any but only one can be selected if the user wishes to post a type of media on their status.</p>
+<p class="sync-line" data-line="36"><img src="images/14.jpg" alt="2"></p>
+<p class="sync-line" data-line="38"><b>Query 1</b></p>
+<pre class="editor-colors lang-sql sync-line" data-line="39"><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>select</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>userID</span></span><span>,&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>commenttext</span></span><span>,&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>tags</span></span><span>,&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>feeling</span></span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>from</span></span><span>&nbsp;post_facts&nbsp;p</span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>inner&nbsp;join</span></span><span>&nbsp;user_dimension&nbsp;u</span></span></div><div class="line"><span class="source sql"><span class="keyword other DDL create II sql"><span>on</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>userID</span></span><span>&nbsp;</span><span class="keyword operator comparison sql"><span>=</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>u</span></span><span>.</span><span class="constant other table-name sql"><span>userID</span></span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>where</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>user_name</span></span><span>&nbsp;</span><span class="keyword operator comparison sql"><span>=</span></span><span>&nbsp;</span><span class="string quoted single sql"><span class="punctuation definition string begin sql"><span>&#39;</span></span><span>Donncha&nbsp;Cassidy-Hand</span><span class="punctuation definition string end sql"><span>&#39;</span></span></span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>and</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>feeling</span></span><span>&nbsp;</span><span class="keyword operator comparison sql"><span>=</span></span><span>&nbsp;</span><span class="string quoted single sql"><span class="punctuation definition string begin sql"><span>&#39;</span></span><span>Happy</span><span class="punctuation definition string end sql"><span>&#39;</span></span></span><span>;</span></span></div></pre>
+<p class="sync-line" data-line="47"><b>Query 2</b></p>
+<pre class="editor-colors lang-sql sync-line" data-line="48"><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>select</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>user_name</span></span><span>,&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>commenttext</span></span><span>,&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>tags</span></span><span>,&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>feeling</span></span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>from</span></span><span>&nbsp;post_facts&nbsp;p</span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>inner&nbsp;join</span></span><span>&nbsp;date_dimension&nbsp;d</span></span></div><div class="line"><span class="source sql"><span class="keyword other DDL create II sql"><span>on</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>p</span></span><span>.</span><span class="constant other table-name sql"><span>dateid</span></span><span>&nbsp;</span><span class="keyword operator comparison sql"><span>=</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>u</span></span><span>.</span><span class="constant other table-name sql"><span>dateid</span></span></span></div><div class="line"><span class="source sql"><span class="keyword other DML sql"><span>where</span></span><span>&nbsp;</span><span class="constant other database-name sql"><span>u</span></span><span>.</span><span class="constant other table-name sql"><span>month</span></span><span>&nbsp;</span><span class="keyword operator comparison sql"><span>=</span></span><span>&nbsp;</span><span class="string quoted single sql"><span class="punctuation definition string begin sql"><span>&#39;</span></span><span>November</span><span class="punctuation definition string end sql"><span>&#39;</span></span></span><span>;</span></span></div></pre>
+ </body>  </html>

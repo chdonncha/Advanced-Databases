@@ -38,10 +38,10 @@ The media_dimension stores the references to the photo or video file selected, w
 
 <b>Query 1</b>
 ```sql
-select p.user_name, p.commenttext, p.tags, p.feeling
+select p.userID, p.commenttext, p.tags, p.feeling
 from post_facts p
 inner join user_dimension u
-on p.user_name = u.user_name
+on p.userID = u.userID
 where p.user_name = 'Donncha Cassidy-Hand'
 and p.feeling = 'Happy';
 ```
@@ -50,6 +50,6 @@ and p.feeling = 'Happy';
 select p.user_name, p.commenttext, p.tags, p.feeling
 from post_facts p
 inner join date_dimension d
-on p.dateid = u.date_dimension
-where u.date_dimension = 'November';
+on p.dateid = u.dateid
+where u.month = 'November';
 ```
