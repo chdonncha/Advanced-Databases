@@ -1,4 +1,4 @@
-db.lab1.insert(student={
+db.lab1.insert({
 	Student_ID: '1',
 	Name: 'Mary',
 	Surname: 'Murray',
@@ -6,27 +6,30 @@ db.lab1.insert(student={
 	Age: '45',
 	courses: [
 	{
-		Student_ID: '1',
 		Course_ID: 'DB',
 		Mark: '56',
-		ExamDate: '10/10/2011'
+		ExamDate: new Date('10/10/2011'),
+		Course_Name: 'Databases',
+		Credits: '10'
 	},
 	{
-		Student_ID: '1',
 		Course_ID: 'MA',
 		Mark: '76',
-		ExamDate: '09/11/2012'
+		ExamDate: new Date('09/11/2012'),
+		Course_Name: 'Maths',
+		Credits: '5'
 	},
 	{
-		Student_ID: '1',
 		Course_ID: 'PR',
 		Mark: '45',
-		ExamDate: '02/07/2014'
+		ExamDate: new Date('02/07/2014'),
+		Course_Name: 'Programming',
+		Credits: '15'
 	}
 	]
 });
 
-db.lab1.insert(student={
+db.lab1.insert({
 	Student_ID: '2',
 	Name: 'Bill',
 	Surname: 'Bellichick',
@@ -37,24 +40,24 @@ db.lab1.insert(student={
 		Student_ID: '2',
 		Course_ID: 'DB',
 		Mark: '55',
-		ExamDate: '10/10/2011'
+		ExamDate: new Date('10/10/2011'),
 	},
 	{
 		Student_ID: '2',
 		Course_ID: 'MA',
 		Mark: '87',
-		ExamDate: '09/11/2011'
+		ExamDate: new Date('09/11/2011'),
 	},
 	{
 		Student_ID: '2',
 		Course_ID: 'PR',
 		Mark: '45',
-		ExamDate: '10/10/2011'
+		ExamDate: new Date('10/10/2011'),
 	}
 	]
 });
 
-db.lab1.insert(student={
+db.lab1.insert({
 	Student_ID: '3',
 	Name: 'Tom',
 	Surname: 'Brady',
@@ -65,18 +68,18 @@ db.lab1.insert(student={
 		Student_ID: '3',
 		Course_ID: 'DB',
 		Mark: '34',
-		ExamDate: '09/11/2012'
+		ExamDate: new Date('09/11/2012'),
 	},
 	{
 		Student_ID: '3',
 		Course_ID: 'MA',
 		Mark: '56',
-		ExamDate: '02/07/2014'
+		ExamDate: new Date('02/07/2014'),
 	}
 	]
 });
 
-db.lab1.insert(student={
+db.lab1.insert({
 	Student_ID: '4',
 	Name: 'John',
 	Surname: 'Bale',
@@ -87,38 +90,19 @@ db.lab1.insert(student={
 		Student_ID: '4',
 		Course_ID: 'DB',
 		Mark: '71',
-		ExamDate: '10/10/2011'
+		ExamDate: new Date('10/10/2011'),
 	},
 	{
 		Student_ID: '4',
 		Course_ID: 'MA',
 		Mark: '88',
-		ExamDate: '10/10/2011'
+		ExamDate: new Date('10/10/2011'),
 	},
 	{
 		Student_ID: '4',
 		Course_ID: 'PR',
 		Mark: '95',
-		ExamDate: '09/11/2012'
+		ExamDate: new Date('09/11/2012'),
 	}
 	]
 });
-
-db.lab1.insert(student={
-	Course_ID: 'DB',
-	Course_Name: 'Databases',
-	Credits: '10'
-});
-
-db.lab1.insert(student={
-	Course_ID: 'MA',
-	Course_Name: 'Maths',
-	Credits: '5'
-});
-
-db.lab1.insert({
-	Course_ID: 'PR',
-	Course_Name: 'Programming',
-	Credits: '15'
-});
-
