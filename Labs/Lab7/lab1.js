@@ -6,7 +6,7 @@ db.lab1.insert(
 		Surname: 'Murray',
 		Nationality: 'Irish',
 		Age: 45,
-		courses: [
+		Courses: [
 		{
 			Course_ID: 'DB',
 			Mark: 56,
@@ -36,7 +36,7 @@ db.lab1.insert(
 		Surname: 'Bellichick',
 		Nationality: 'American',
 		Age: 32,
-		courses: [	
+		Courses: [	
 		{
 			Course_ID: 'DB',
 			Mark: 55,
@@ -66,7 +66,7 @@ db.lab1.insert(
 		Surname: 'Brady',
 		Nationality: 'Canadian',
 		Age: 22,
-		courses: [
+		Courses: [
 		{
 			Course_ID: 'DB',
 			Mark: 34,
@@ -89,7 +89,7 @@ db.lab1.insert(
 		Surname: 'Bale',
 		Nationality: 'English',
 		Age: 24,
-		courses: [
+		Courses: [
 		{
 			Course_ID: 'DB',
 			Mark: 71,
