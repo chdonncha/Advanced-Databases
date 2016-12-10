@@ -38,7 +38,6 @@ db.lab1.insert(
 		Age: '32',
 		courses: [	
 		{
-			Student_ID: '2',
 			Course_ID: 'DB',
 			Mark: '55',
 			ExamDate: new Date('10/10/2011'),
@@ -46,7 +45,6 @@ db.lab1.insert(
 			Credits: '10'
 		},
 		{
-			Student_ID: '2',
 			Course_ID: 'MA',
 			Mark: '87',
 			ExamDate: new Date('09/11/2011'),
@@ -54,7 +52,6 @@ db.lab1.insert(
 			Credits: '5'
 		},
 		{
-			Student_ID: '2',
 			Course_ID: 'PR',
 			Mark: '45',
 			ExamDate: new Date('10/10/2011'),
@@ -71,7 +68,6 @@ db.lab1.insert(
 		Age: '22',
 		courses: [
 		{
-			Student_ID: '3',
 			Course_ID: 'DB',
 			Mark: '34',
 			ExamDate: new Date('09/11/2012'),
@@ -79,7 +75,6 @@ db.lab1.insert(
 			Credits: '10'
 		},
 		{
-			Student_ID: '3',
 			Course_ID: 'MA',
 			Mark: '56',
 			ExamDate: new Date('02/07/2014'),
@@ -96,7 +91,6 @@ db.lab1.insert(
 		Age: '24',
 		courses: [
 		{
-			Student_ID: '4',
 			Course_ID: 'DB',
 			Mark: '71',
 			ExamDate: new Date('10/10/2011'),
@@ -104,7 +98,6 @@ db.lab1.insert(
 			Credits: '10'
 		},
 		{
-			Student_ID: '4',
 			Course_ID: 'MA',
 			Mark: '88',
 			ExamDate: new Date('10/10/2011'),
@@ -112,7 +105,6 @@ db.lab1.insert(
 			Credits: '5'
 		},
 		{
-			Student_ID: '4',
 			Course_ID: 'PR',
 			Mark: '95',
 			ExamDate: new Date('09/11/2012'),
