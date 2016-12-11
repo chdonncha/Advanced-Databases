@@ -53,9 +53,13 @@ db.teams.find(
 
 // q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!) **NEEDS WORK**
 
-var cursor = db.teams.find ( { type : 'example' });
+var cursor = db.teams.find ( { league : 'Serie A' });
 
-// q 6. update the points of Arsenal to be equal to the point of Barcelona
+while (cursor.hasNext()) {
+   printjson(cursor.next());
+}
+
+// q 6. update the points of Arsenal to be equal to the point of Barcelona **NEEDS WORK**
 
 db.teams.find(your_querry).forEach(function(doc) {
 db.teams.update ({ _id : doc._id})
