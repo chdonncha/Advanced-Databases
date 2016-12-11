@@ -44,16 +44,25 @@ db.teams.find().sort({
 // q 4. Update the number of goal of all the Real Madrid Players by 3 goals each **NOT WORKING**
  
 db.teams.update(
-	{
-		team_id : 'Real Madrid'
-	},
-	{$inc : {'$players.goal' : 3}},
+	{team_id : 'spa2'},
+	{$inc : {'players.goal' : 3}},
 	{multi: true}
 )
 
 // q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!) **NEEDS WORK**
 
 var cursor = db.teams.find ( { type : 'example' });
+
+// q 6. update the points of Arsenal to be equal to the point of Barcelona
+
+db.teams.find(your_querry).forEach(function(doc) {
+db.teams.update ({ _id : doc._id})
+
+db.teams.find(
+	{name: 'Arsenal'}
+).forEach(fuction(doc) {
+	db.teams.update ({_id : doc.id}, {$set : { 'field1' : doc.field2.lenght}})
+})
 
 // q 7. Find all the players over 30 years old containing the string "es"
 
@@ -85,11 +94,11 @@ db.teams.aggregate(
 	{$project : {avgAmount: { $avg : ['$players.goal', '$players.caps'] }}},
 	{$group : {_id : "$players.p_id", 
 		Matches : {$first : '$players.caps'},
-		avgAmount: { $avg : ['$players.goal', '$players.caps'] }}},
+		avgAmount: { $divide : [ '$players.goal', '$players.caps' }}},
 	{$sort : {'avgAmount' : -1}}
 );
 
-// q 10. Write a js function old_vs_young(x) , that receives a positive integer x representing the age of a player
+// q 11. Write a js function old_vs_young(x) , that receives a positive integer x representing the age of a player
 // and returns 1 if the total number of goals scored by the players with age >= x years is greater than the 
 // total number of goals scored by the players with age < x, otherwise it returns 0.
 // The function also prints the number of goals for each group of players  
