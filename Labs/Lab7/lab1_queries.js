@@ -1,3 +1,5 @@
+// q 1. Find all the students that failed
+
 db.lab1_query1.insert(
     db.lab1.find({
         'Courses': {
@@ -10,6 +12,8 @@ db.lab1_query1.insert(
     }).toArray()
 );
 
+// q 2. Find the number of people that passed each exam 
+
 db.lab1_query2.insert(
 	db.lab1.aggregate(
 		{$unwind : '$Courses'},
@@ -17,6 +21,8 @@ db.lab1_query2.insert(
 		{$group : {_id : "$Courses.Course_ID", Count : {$sum : 1}}}
 	).toArray()
 );
+
+// q 3. Find the student with the highest average mark 
 
 db.lab1_query3.insert(
 	db.lab1.aggregate(
