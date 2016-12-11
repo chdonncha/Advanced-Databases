@@ -33,7 +33,6 @@ db.teams.update(
     }
 );
 
-
 // q 3. Find the oldest team **COMPLETE**
 
 db.teams.find().sort({
@@ -41,24 +40,16 @@ db.teams.find().sort({
 }).limit(1).pretty();
 
 
-// q 4. Update the number of goal of all the Real Madrid Players by 3 goals each **NOT WORKING**
- 
-db.teams.update(
-	{team_id : 'spa2'},
-	{$push : { $inc : { 'players.goal' : 3}}},
-	{multi: true}
-)
-
+// q 4. Update the number of goal of all the Real Madrid Players by 3 goals each **COMPLETE**
 
 db.teams.find(
     {team_id : 'spa2'}
-).forEach(teams) 
-{
-    for (var i in teams.players) {
-    db.teams.update({team_id : 'spa2'}, 
-        {$inc : { $push : {'$players.goal' : 3}}});
-    }
-}
+).forEach(function (doc) {
+    doc.players.forEach(function (players) {
+        players.goal += 3;
+});
+    db.teams.save(doc);
+});
 
 // q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!) **NEEDS WORK**
 
