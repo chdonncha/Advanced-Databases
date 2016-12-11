@@ -1,5 +1,5 @@
 
-// q 2. insert two new players
+// q 2. insert two new players **COMPLETE**
 
 db.teams.update(
     {
@@ -34,20 +34,31 @@ db.teams.update(
 );
 
 
-// q 3. Find the oldest team
+// q 3. Find the oldest team **COMPLETE**
 
 db.teams.find().sort({
     'date_founded': 1
-}).limit(1);
+}).limit(1).pretty();
 
 
 // q 4. Update the number of goal of all the Real Madrid Players by 3 goals each **NOT WORKING**
  
 db.teams.update(
 	{team_id : 'spa2'},
-	{$inc : {'players.goal' : 3}},
+	{$push : { $inc : { 'players.goal' : 3}}},
 	{multi: true}
 )
+
+
+db.teams.find(
+    {team_id : 'spa2'}
+).forEach(teams) 
+{
+    for (var i in teams.players) {
+    db.teams.update({team_id : 'spa2'}, 
+        {$inc : { $push : {'$players.goal' : 3}}});
+    }
+}
 
 // q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!) **NEEDS WORK**
 
@@ -64,7 +75,7 @@ db.teams.find(
 	db.teams.update ({_id : doc.id}, {$set : { 'field1' : doc.field2.lenght}})
 })
 
-// q 7. Find all the players over 30 years old containing the string "es"
+// q 7. Find all the players over 30 years old containing the string "es" **COMPLETE**
 
 db.teams.aggregate(
 	{$unwind: '$players'}, 
@@ -73,28 +84,30 @@ db.teams.aggregate(
     {$group: {_id: '$players.p_id', age: {$first: '$players.age'}}}
 );
 
-// q 8. Using aggregate mongoDB operator, list the total point by league.
+// q 8. Using aggregate mongoDB operator, list the total point by league. **COMPLETE**
 
 db.teams.aggregate(
     {$group: {_id: null, total : {$sum : '$points'}}}
 );
 
-// q 9. Using aggregation, list all the teams by number of goals in descending order. **NEEDS WORK**
+// q 9. Using aggregation, list all the teams by number of goals in descending order. **COMPLETE**
 
 db.teams.aggregate(
-	{$group : {_id : '$name', Goals : {$first : '$players.goal'}}},
-	{$sort : {'Goals' : -1}}
+    {$unwind : '$players'},
+	{$group : {_id : '$name', 
+        total : {$sum : '$players.goal'}}},
+	{$sort : {'total' : -1}}
 )
 
-// q 10. Compute the average number of goal per match per player and store the output in a collection 
-// named student_id_avg_goals.  **NEEDS WORK 2 AVERAGES NOW WORKING**
+// q 10. Compute the average number of goal per match per player and store the output in a collection **COMPLETE**
+// named student_id_avg_goals.
 
 db.teams.aggregate(
 	{$unwind : '$players'},
-	{$project : {avgAmount: { $avg : ['$players.goal', '$players.caps'] }}},
-	{$group : {_id : "$players.p_id", 
-		Matches : {$first : '$players.caps'},
-		avgAmount: { $divide : [ '$players.goal', '$players.caps' }}},
+	{$project : {_id : "$players.p_id", 
+        Goals : '$players.goal',
+		Matches : '$players.caps',
+		avgAmount: { $divide : [ '$players.goal', '$players.caps' ]}}},
 	{$sort : {'avgAmount' : -1}}
 );
 
