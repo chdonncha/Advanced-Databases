@@ -1,5 +1,5 @@
 
-// q 2. insert two new players **NOT WORKING**
+// q 2. insert two new players
 
 db.teams.update(
     {
@@ -51,7 +51,7 @@ db.teams.update(
 	{multi: true}
 )
 
-// q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!)
+// q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!) **NEEDS WORK**
 
 var cursor = db.teams.find ( { type : 'example' });
 
@@ -67,17 +67,18 @@ db.teams.aggregate(
 // q 8. Using aggregate mongoDB operator, list the total point by league.
 
 db.teams.aggregate(
-    {$group: {_id: null, total: {$sum : '$points'}}}
+    {$group: {_id: null, total : {$sum : '$points'}}}
 );
 
-// q 9. Using aggregation, list all the teams by number of goals in descending order.
+// q 9. Using aggregation, list all the teams by number of goals in descending order. **NEEDS WORK**
 
-db.teans.aggregate(
-	{$unwind : '$players'}
+db.teams.aggregate(
+	{$group : {_id : '$name', Goals : {$first : '$players.goal'}}},
+	{$sort : {'Goals' : -1}}
 )
 
 // q 10. Compute the average number of goal per match per player and store the output in a collection 
-// named student_id_avg_goals.  
+// named student_id_avg_goals.  **NEEDS WORK 2 AVERAGES NOW WORKING**
 
 db.teams.aggregate(
 	{$unwind : '$players'},
