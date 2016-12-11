@@ -51,26 +51,24 @@ db.teams.find(
     db.teams.save(doc);
 });
 
-// q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!) **NEEDS WORK**
+// q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!)  **COMPLETE**
 
-function question() {
+var cursor = db.teams.find ( { league : 'Serie A' });
 
-    var cursor = db.teams.findOne ( { league : 'Serie A' });
-
-    db.teams.find(
-        {league : 'Serie A'}
-    ).forEach(function (cursor) {
-        cursor.players.forEach(function (players) {
-            var addPercent = Math.round(players.caps * 100) / 100 + '%';
-            players.caps += addPercent;
-    });
-        db.teams.save(cursor);
-    });
+cursor.forEach(function (cursor) {
+    cursor.players.forEach(function (players) {
+        var addPercent = Math.ceil(players.caps * 0.10);
+        players.caps += addPercent;
+});
+    db.teams.save(cursor);
+});
 
 // q 6. update the points of Arsenal to be equal to the point of Barcelona **NEEDS WORK**
 
-db.teams.find(your_querry).forEach(function(doc) {
-db.teams.update ({ _id : doc._id})
+var Arsenal = db.teams.find ( { name : 'Arsenal' });
+var Barcelona = db.teams.find ( { name : 'Barcelona' });
+
+
 
 db.teams.find(
 	{name: 'Arsenal'}
