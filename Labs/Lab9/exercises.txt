@@ -6,6 +6,10 @@ CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }
 (e17)-[:FRIEND_OF]->(e3),
 (e18)-[:FRIEND_OF]->(e3), (e18)-[:FRIEND_OF]->(e16),
 
+TO DELETE
+ 
+MATCH (a:Person) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
+
 
 - Show the age of Denis and his friends **COMPLETE**
 
@@ -60,7 +64,7 @@ RETURN e1, e2
 - Count all the friends of Paul with maximum distance 5 steps by nationality **COMPLETE BUT IS THAT NUMBER MEANT TO BE THAT HIGH???** 
 
 MATCH (e1:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (e2:Person) 
-RETURN e2.country, COUNT(e2.country) as nationalityNumber
+RETURN e2.country, COUNT(DISTINCT e2) as nationalityNumber
 
 
 - Show the path(s) between Paul and Lisa. For each path show the length. How many paths are there? **NOT COMPLETE** HOW TO COUNT ALL THE PATHS?
@@ -69,17 +73,18 @@ MATCH
 path = (e1:Person {name: "Paul" }) - [:FRIEND_OF*..5] -> (m:Person {name:"Lisa"})
 RETURN path, length(path), COUNT(path) as totalPaths
 
+
 - Show the shortest path between Paul and Lisa. **COMPLETE**
 
 MATCH
 path = shortestPath ((e:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (m:Person {name: "Lisa"}))
 RETURN path
 
-- Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football **NOT COMPLETE**
+- Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football **COMPLETE**
 
 MATCH
-path = (e1:Person {name: "Mary" }) - [:FRIEND_OF*..5] -> (m:Person {sport:"Football"})
-RETURN path
+path = (e1:Person {name: "Mary" }) - [:FRIEND_OF*..5] -> (e2:Person {sport:"Football"})
+RETURN e1, e2
 
 
 EXERCISE 2
@@ -168,7 +173,7 @@ TO DELETE
 MATCH (a:Airport) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
 
 
-- Find the total time from Moscow to Rio. Show also the path (airport connections) **NEEDS WORK**
+- Find the total time from Moscow to Rio. Show also the path (airport connections) **COMPLETE**
 
 MATCH
 path = (e1:Airport {city: "moscow" }) - [:CONNECTED_TO*..3] -> (m:Airport {city:"rio"})
@@ -190,4 +195,6 @@ RETURN e1, e2
 
 - Show what can be reached from London in less than 240 minutes (4 hours). 
 
-MATCH (e1:Airpot {city: "London"}) - [:CONNECTED_TO]
+MATCH (e1:Airport {city: "chicago"}) - [:CONNECTED_TO*..2] - (e2:Airport) 
+WHERE e2.time < 240
+RETURN e1, e2
