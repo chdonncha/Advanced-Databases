@@ -1,17 +1,23 @@
 EXERCISE 1
 
 CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }),
-(e18:Person { name: "Bill", country: "Ireland", age: 23});
+(e18:Person { name: "Bill", country: "Ireland", age: 23})
 
-(e17)-[:FRIEND_OF]->(e3),
-(e18)-[:FRIEND_OF]->(e3), (e18)-[:FRIEND_OF]->(e16),
+MATCH (e1:Person {name: "Tom"}), (e2:Person {name: "Mary"})
+CREATE (e1)-[:FRIEND_OF]->(e2)
+
+MATCH (e1:Person {name: "Bill"}), (e2:Person {name: "Mary"})
+CREATE (e1)-[:FRIEND_OF]->(e2)
+
+MATCH (e1:Person {name: "Bill"}), (e2:Person {name: "Denis"})
+CREATE (e1)-[:FRIEND_OF]->(e2)
 
 TO DELETE
  
 MATCH (a:Person) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
 
 
-- Show the age of Denis and his friends **COMPLETE**
+- Show the age of Denis and his friends
 
 MATCH (e1:Person {name: "Denis"}) - [:FRIEND_OF] - (e2) 
 RETURN e2, e1.age as denisAge
@@ -23,64 +29,65 @@ MATCH (e:Person {country: "Scotland"})
 RETURN e
 
 
-- Show all the person with age less or equal than 20 from Ireland **COMPLETE**
+- Show all the person with age less or equal than 20 from Ireland
 
 MATCH (e:Person {country: "Ireland"}) 
 WHERE e.age <= 20 
 RETURN e
 
 
-- Show all the person with age less or equal 30 playing football **COMPLETE**
+- Show all the person with age less or equal 30 playing football 
 
 MATCH (e:Person {sport: "Football"}) 
 WHERE e.age <= 30 
 RETURN e
 
 
-- Count the person by country **COMPLETE**
+- Count the person by country
 
 MATCH (e1)
 RETURN e1.country, COUNT(e1.country) as total
 
 
-- Show the average age of the person group by sport **COMPLETE**
+- Show the average age of the person group by sport
 
 MATCH (e1)
 RETURN e1.sport, AVG(e1.age) as averageAge
 
 
-- Show all the direct friends of Mary **COMPLETE ???? ***
+- Show all the direct friends of Mary
 
 MATCH (e1:Person {name: "Mary"}) - [:FRIEND_OF] - (e2) 
 RETURN e1, e2
 
 
-- Show all the friends of Paul with a maximum distance of 5 steps **COMPLETE**
+- Show all the friends of Paul with a maximum distance of 5 steps
 
 MATCH (e1:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (e2) 
 RETURN e1, e2
 
 
-- Count all the friends of Paul with maximum distance 5 steps by nationality **COMPLETE BUT IS THAT NUMBER MEANT TO BE THAT HIGH???** 
+- Count all the friends of Paul with maximum distance 5 steps by nationality
 
 MATCH (e1:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (e2:Person) 
 RETURN e2.country, COUNT(DISTINCT e2) as nationalityNumber
 
 
-- Show the path(s) between Paul and Lisa. For each path show the length. How many paths are there? **NOT COMPLETE** HOW TO COUNT ALL THE PATHS?
+- Show the path(s) between Paul and Lisa. For each path show the length. How many paths are there?
 
 MATCH
 path = (e1:Person {name: "Paul" }) - [:FRIEND_OF*..5] -> (m:Person {name:"Lisa"})
-RETURN path, length(path), COUNT(path) as totalPaths
+RETURN path,
+REDUCE (tot = 0, n IN relationships(path) | tot + length(path))  as path_length
 
 
-- Show the shortest path between Paul and Lisa. **COMPLETE**
+- Show the shortest path between Paul and Lisa.
 
 MATCH
 path = shortestPath ((e:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (m:Person {name: "Lisa"}))
 RETURN path
 
-- Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football **COMPLETE**
+- Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football
 
 MATCH
 path = (e1:Person {name: "Mary" }) - [:FRIEND_OF*..5] -> (e2:Person {sport:"Football"})
@@ -187,14 +194,15 @@ RETURN e1, e2, e2.price
 ORDER BY e2.price
 
 
-- Show what can be reached from Chicago in one or two steps (= direct flight or 1 change only) 
+- Show what can be reached from Chicago in one or two steps (= direct flight or 1 change only) **COMPLETE**
 
-MATCH (e1:Airport {city: "chicago"}) - [:CONNECTED_TO*..2] - (e2:Airport) 
+MATCH (e1:Airport {city: "chicago"}) - [:CONNECTED_TO*1..2] - (e2:Airport) 
 RETURN e1, e2
 
 
-- Show what can be reached from London in less than 240 minutes (4 hours). 
+- Show what can be reached from London in less than 240 minutes (4 hours). **NEEDS WORK**
 
-MATCH (e1:Airport {city: "chicago"}) - [:CONNECTED_TO*..2] - (e2:Airport) 
+path = (e1:Airport {city: "chicago"}) - [:CONNECTED_TO*..2] - (e2:Airport) 
 WHERE e2.time < 240
 RETURN e1, e2
+REDUCE (tot = 0, n IN relationships(path) | tot + )  as path_length
