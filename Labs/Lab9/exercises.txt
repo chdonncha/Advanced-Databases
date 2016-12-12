@@ -1,0 +1,3 @@
+(e16:Person { name: "Denis", country: "Scotland", age: 34, sport: "Football" }),
+(e16:Person { name: "Denis", country: "Scotland", age: 34, sport: "Football" }),
+(e1)-[:FRIEND_OF]->(e2),(e1)-[:FRIEND_OF]->(e3),
