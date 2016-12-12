@@ -1,3 +1,5 @@
+EXERCISE 1
+
 CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }),
 (e18:Person { name: "Bill", country: "Ireland", age: 23});
 
@@ -5,37 +7,51 @@ CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }
 (e18)-[:FRIEND_OF]->(e3), (e18)-[:FRIEND_OF]->(e16),
 
 
-- Show the age of Denis and his friends
+- Show the age of Denis and his friends **NOT COMPLETE**  HOW DO I SHOW HIS AGE?**
+
+MATCH (e1:Person {name: "Denis"}) - [:FRIEND_OF] - (e2) 
+return e2
 
 
+- Show all the person from Scotland **COMPLETE**
 
-- Show all the person from Scotland 
-
-
-
-- Show all the person with age less or equal than 20 from Ireland 
+MATCH (e:Person {country: "Scotland"}) 
+return e
 
 
+- Show all the person with age less or equal than 20 from Ireland **COMPLETE**
 
-- Show all the person with age less or equal 30 playing football 
+MATCH (e:Person {country: "Ireland"}) 
+WHERE e.age <= 20 
+return e
 
+
+- Show all the person with age less or equal 30 playing football **COMPLETE**
+
+MATCH (e:Person {sport: "Football"}) 
+WHERE e.age <= 30 
+return e
 
 
 - Count the person by country 
 
-
+MATCH (e1:Person {name: "Denis"}) - [:FRIEND_OF] - (e2) 
+return e2, COUNT(e2.country)
 
 - Show the average age of the person group by sport 
 
+MATCH
 
+- Show all the direct friends of Mary **COMPLETE ???? ***
 
-- Show all the direct friends of Mary 
-
+MATCH (e1:Person {name: "Mary"}) - [:FRIEND_OF] - (e2) 
+return e1, e2
 
 
 - Show all the friends of Paul with a maximum distance of 5 steps 
 
-
+MATCH  (e1:Person {name "Paul"}) - [:FRIENDS_OF] - (e2)
+return e1, e2
 
 - Count all the friends of Paul with maximum distance 5 steps by nationality 
 
@@ -50,3 +66,6 @@ CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }
 
 
 - Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football
+
+
+EXERCISE 2
