@@ -7,65 +7,75 @@ CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }
 (e18)-[:FRIEND_OF]->(e3), (e18)-[:FRIEND_OF]->(e16),
 
 
-- Show the age of Denis and his friends **NOT COMPLETE**  HOW DO I SHOW HIS AGE?**
+- Show the age of Denis and his friends **COMPLETE**
 
 MATCH (e1:Person {name: "Denis"}) - [:FRIEND_OF] - (e2) 
-return e2
+RETURN e2, e1.age as denisAge
 
 
 - Show all the person from Scotland **COMPLETE**
 
 MATCH (e:Person {country: "Scotland"}) 
-return e
+RETURN e
 
 
 - Show all the person with age less or equal than 20 from Ireland **COMPLETE**
 
 MATCH (e:Person {country: "Ireland"}) 
 WHERE e.age <= 20 
-return e
+RETURN e
 
 
 - Show all the person with age less or equal 30 playing football **COMPLETE**
 
 MATCH (e:Person {sport: "Football"}) 
 WHERE e.age <= 30 
-return e
+RETURN e
 
 
-- Count the person by country 
+- Count the person by country **COMPLETE**
 
-MATCH (e1:Person {name: "Denis"}) - [:FRIEND_OF] - (e2) 
-return e2, COUNT(e2.country)
+MATCH (e1)
+RETURN e1.country, COUNT(e1.country) as total
 
-- Show the average age of the person group by sport 
 
-MATCH
+- Show the average age of the person group by sport **COMPLETE**
+
+MATCH (e1)
+RETURN e1.sport, AVG(e1.age) as averageAge
+
 
 - Show all the direct friends of Mary **COMPLETE ???? ***
 
 MATCH (e1:Person {name: "Mary"}) - [:FRIEND_OF] - (e2) 
-return e1, e2
+RETURN e1, e2
 
 
-- Show all the friends of Paul with a maximum distance of 5 steps 
+- Show all the friends of Paul with a maximum distance of 5 steps **COMPLETE**
 
-MATCH  (e1:Person {name "Paul"}) - [:FRIENDS_OF] - (e2)
-return e1, e2
-
-- Count all the friends of Paul with maximum distance 5 steps by nationality 
+MATCH (e1:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (e2) 
+RETURN e1, e2
 
 
+- Count all the friends of Paul with maximum distance 5 steps by nationality **COMPLETE BUT IS THAT NUMBER MEANT TO BE THAT HIGH???** 
 
-- Show the path(s) between Paul and Lisa. For each path show the length. How many paths are there? 
-
-
-
-- Show the shortest path between Paul and Lisa. 
+MATCH (e1:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (e2:Person) 
+RETURN e2.country, COUNT(e2.country) as numfriends
 
 
+- Show the path(s) between Paul and Lisa. For each path show the length. How many paths are there? **NOT COMPLETE** HOW TO COUNT ALL THE PATHS?
 
-- Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football
+MATCH
+path = (e:Person {name: "Paul" }) - [:FRIEND_OF*..5] -> (m:Person {name:"Lisa"})
+RETURN path, length(path), COUNT(path) as totalPaths
+
+- Show the shortest path between Paul and Lisa. **COMPLETE**
+
+MATCH
+path = shortestPath ((e:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (m:Person {name: "Lisa"}))
+RETURN path
+
+- Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football **NOT COMPLETE**
 
 
 EXERCISE 2
