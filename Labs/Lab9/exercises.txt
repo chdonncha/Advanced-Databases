@@ -1,3 +1,52 @@
-(e16:Person { name: "Denis", country: "Scotland", age: 34, sport: "Football" }),
-(e16:Person { name: "Denis", country: "Scotland", age: 34, sport: "Football" }),
-(e1)-[:FRIEND_OF]->(e2),(e1)-[:FRIEND_OF]->(e3),
+CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }),
+(e18:Person { name: "Bill", country: "Ireland", age: 23});
+
+(e17)-[:FRIEND_OF]->(e3),
+(e18)-[:FRIEND_OF]->(e3), (e18)-[:FRIEND_OF]->(e16),
+
+
+- Show the age of Denis and his friends
+
+
+
+- Show all the person from Scotland 
+
+
+
+- Show all the person with age less or equal than 20 from Ireland 
+
+
+
+- Show all the person with age less or equal 30 playing football 
+
+
+
+- Count the person by country 
+
+
+
+- Show the average age of the person group by sport 
+
+
+
+- Show all the direct friends of Mary 
+
+
+
+- Show all the friends of Paul with a maximum distance of 5 steps 
+
+
+
+- Count all the friends of Paul with maximum distance 5 steps by nationality 
+
+
+
+- Show the path(s) between Paul and Lisa. For each path show the length. How many paths are there? 
+
+
+
+- Show the shortest path between Paul and Lisa. 
+
+
+
+- Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football
