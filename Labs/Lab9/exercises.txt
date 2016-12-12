@@ -66,7 +66,7 @@ RETURN e2.country, COUNT(e2.country) as numfriends
 - Show the path(s) between Paul and Lisa. For each path show the length. How many paths are there? **NOT COMPLETE** HOW TO COUNT ALL THE PATHS?
 
 MATCH
-path = (e:Person {name: "Paul" }) - [:FRIEND_OF*..5] -> (m:Person {name:"Lisa"})
+path = (e1:Person {name: "Paul" }) - [:FRIEND_OF*..5] -> (m:Person {name:"Lisa"})
 RETURN path, length(path), COUNT(path) as totalPaths
 
 - Show the shortest path between Paul and Lisa. **COMPLETE**
@@ -77,5 +77,26 @@ RETURN path
 
 - Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football **NOT COMPLETE**
 
+MATCH
+path = (e1:Person {name: "Paul" }) - [:FRIEND_OF*..5] -> (m:Person {name:"Lisa"})
+RETURN path, length(path), COUNT(path) as totalPaths
+
 
 EXERCISE 2
+
+CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }),
+
+CREATE
+(e1:Airport { dublin,ireland,dub) 
+(e2:Airport { cork,ireland,ork)
+(e3:Airport { london,uk,lhr)
+(e4:Airport { rome,italy,fco) 
+(e5:Airport { moscow,russia,dme) 
+(e6:Airport { hongkong,china,hkg)
+(e7:Airport { amsterdam,holland,ams) 
+(e8:Airport { berlin,germany,txl) 
+(e9:Airport { paris,france,cdg) 
+(e10:Airport { newyork,usa,jfk) 
+(e11:Airport { chicago,usa,ord) 
+(e12:Airport { sao_paulo,brazil,gru) 
+(e13:Airport { rio,brazil,gig) 
