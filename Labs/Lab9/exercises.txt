@@ -98,10 +98,23 @@ CREATE
 (e10:Airport { city: "newyork", country: "usa", code: "jfk" }),
 (e11:Airport { city: "chicago", country: "usa", code: "ord" }),
 (e12:Airport { city: "sao_paulo", country: "brazil", code: "gru" }), 
-(e13:Airport { city: "rio", country: "brazil", code: "gig" })
+(e13:Airport { city: "rio", country: "brazil", code: "gig" }),
 
-CREATE
-(e3)-[:CONNECTED_TO {time: 45, price: 150} ]-(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1),
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]->(e1)
+
 
 (london,dublin,45,150) 
 (rome,london,150,400) 
