@@ -84,19 +84,45 @@ RETURN path, length(path), COUNT(path) as totalPaths
 
 EXERCISE 2
 
-CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }),
 
 CREATE
-(e1:Airport { dublin,ireland,dub) 
-(e2:Airport { cork,ireland,ork)
-(e3:Airport { london,uk,lhr)
-(e4:Airport { rome,italy,fco) 
-(e5:Airport { moscow,russia,dme) 
-(e6:Airport { hongkong,china,hkg)
-(e7:Airport { amsterdam,holland,ams) 
-(e8:Airport { berlin,germany,txl) 
-(e9:Airport { paris,france,cdg) 
-(e10:Airport { newyork,usa,jfk) 
-(e11:Airport { chicago,usa,ord) 
-(e12:Airport { sao_paulo,brazil,gru) 
-(e13:Airport { rio,brazil,gig) 
+(e1:Airport { city: "dublin", country: "ireland", code: "dub" }),
+(e2:Airport { city: "cork", country: "ireland", code: "ork" }),
+(e3:Airport { city: "london", country: "uk", code: "lhr" }),
+(e4:Airport { city: "rome", country: "italy", code: "fco" }), 
+(e5:Airport { city: "moscow", country: "russia", code: "dme" }), 
+(e6:Airport { city: "hongkong", country: "china", code: "hkg" }),
+(e7:Airport { city: "amsterdam", country: "holland", code: "ams" }), 
+(e8:Airport { city: "berlin", country: "germany", code: "txl" }),
+(e9:Airport { city: "paris", country: "france", code: "cdg" }),
+(e10:Airport { city: "newyork", country: "usa", code: "jfk" }),
+(e11:Airport { city: "chicago", country: "usa", code: "ord" }),
+(e12:Airport { city: "sao_paulo", country: "brazil", code: "gru" }), 
+(e13:Airport { city: "rio", country: "brazil", code: "gig" })
+
+CREATE
+(e3)-[:CONNECTED_TO {time: 45, price: 150} ]-(e1),
+
+(london,dublin,45,150) 
+(rome,london,150,400) 
+(rome,paris,120,500)  
+(paris,dublin,60,200) 
+(berlin,moscow,240,900) 
+(paris,amsterdam,30,100) 
+(berlin,dublin,120,900) 
+(london,newyork,700,1100) 
+(dublin,newyork,360,800) 
+(dublin,cork,50,50) 
+(dublin,rome,150,70) 
+(dublin,chicago,480,890) 
+(amsterdam,hongkong,660,750) 
+(london,hongkong,700,1000) 
+(dublin,amsterdam,90,60) 
+(moscow,newyork,720,1000) 
+(moscow,hongkong,420,500) 
+(newyork,chicago,240,430) 
+(dublin,sao_paulo,900,800) 
+(sao_paulo,newyork,840,650) 
+(rio,berlin,1200,1100) 
+
+(e17)-[:FRIEND_OF]->(e3),
