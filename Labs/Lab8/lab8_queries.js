@@ -1,46 +1,38 @@
 
-// q 2. insert two new players **COMPLETE**
+// q 2. insert two new players
 
 db.teams.update(
-    {
-        team_id: 'eng1'
-    },
-    {
-        $push: {
-            'players': {
-                p_id: 'Keane',
-                goal: 33,
-                caps: 326,
-                age: 44
-            }
+    {team_id: 'eng1'},
+    {$push: {'players': 
+        {
+        p_id: 'Keane',
+        goal: 33,
+        caps: 326,
+        age: 44
         }
-    }
+    }}
 );
 
 db.teams.update(
-    {
-        team_id: 'ita3'
-    },
-    {
-        $push: {
-            'players': {
-                p_id: 'Kaka',
-                goal: 53,
-                caps: 112,
-                age: 32
-            }
+    {team_id: 'ita3'},
+    {$push: {'players': 
+        {
+        p_id: 'Kaka',
+        goal: 53,
+        caps: 112,
+        age: 32
         }
-    }
+    }}
 );
 
-// q 3. Find the oldest team **COMPLETE**
+// q 3. Find the oldest team
 
 db.teams.find().sort({
     'date_founded': 1
 }).limit(1).pretty();
 
 
-// q 4. Update the number of goal of all the Real Madrid Players by 3 goals each **COMPLETE**
+// q 4. Update the number of goal of all the Real Madrid Players by 3 goals each
 
 db.teams.find(
     {team_id : 'spa2'}
@@ -51,7 +43,7 @@ db.teams.find(
     db.teams.save(doc);
 });
 
-// q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!)  **COMPLETE**
+// q 5. using a cursor, update the number of caps of all the "Serie A" teams by incrementing them by 10% (round it!)
 
 var cursor = db.teams.find ( { league : 'Serie A' });
 
@@ -63,20 +55,15 @@ cursor.forEach(function (cursor) {
     db.teams.save(cursor);
 });
 
-// q 6. update the points of Arsenal to be equal to the point of Barcelona **NEEDS WORK**
+// q 6. update the points of Arsenal to be equal to the point of Barcelona
 
-var Arsenal = db.teams.find ( { name : 'Arsenal' });
-var Barcelona = db.teams.find ( { name : 'Barcelona' });
+var findPoints = db.teams.findOne({ name: 'Barcelona' }).points;
+print(toPoint);
+db.teams.update(
+    {name : "Arsenal" },
+    {$set : {points : findPoints}});
 
-
-
-db.teams.find(
-	{name: 'Arsenal'}
-).forEach(fuction(doc) {
-	db.teams.update ({_id : doc.id}, {$set : { 'field1' : doc.field2.lenght}})
-})
-
-// q 7. Find all the players over 30 years old containing the string "es" **COMPLETE**
+// q 7. Find all the players over 30 years old containing the string "es"
 
 db.teams.aggregate(
 	{$unwind: '$players'}, 
@@ -85,13 +72,13 @@ db.teams.aggregate(
     {$group: {_id: '$players.p_id', age: {$first: '$players.age'}}}
 );
 
-// q 8. Using aggregate mongoDB operator, list the total point by league. **COMPLETE**
+// q 8. Using aggregate mongoDB operator, list the total point by league.
 
 db.teams.aggregate(
     {$group: {_id: null, total : {$sum : '$points'}}}
 );
 
-// q 9. Using aggregation, list all the teams by number of goals in descending order. **COMPLETE**
+// q 9. Using aggregation, list all the teams by number of goals in descending order.
 
 db.teams.aggregate(
     {$unwind : '$players'},
@@ -100,7 +87,7 @@ db.teams.aggregate(
 	{$sort : {'total' : -1}}
 )
 
-// q 10. Compute the average number of goal per match per player and store the output in a collection **COMPLETE**
+// q 10. Compute the average number of goal per match per player and store the output in a collection
 // named student_id_avg_goals.
 
 db.teams.aggregate(
