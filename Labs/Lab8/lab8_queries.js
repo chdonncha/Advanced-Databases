@@ -118,4 +118,4 @@ function old_vs_young(x){
 
 }
 
-old_vs_young(50);
+old_vs_young(30);

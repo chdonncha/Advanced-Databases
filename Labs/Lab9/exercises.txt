@@ -12,10 +12,6 @@ CREATE (e1)-[:FRIEND_OF]->(e2)
 MATCH (e1:Person {name: "Bill"}), (e2:Person {name: "Denis"})
 CREATE (e1)-[:FRIEND_OF]->(e2)
 
-TO DELETE
- 
-MATCH (a:Person) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
-
 
 - Show the age of Denis and his friends
 
@@ -84,7 +80,7 @@ REDUCE (tot = 0, n IN relationships(path) | tot + length(path))  as path_length
 - Show the shortest path between Paul and Lisa.
 
 MATCH
-path = shortestPath ((e:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (m:Person {name: "Lisa"}))
+path = shortestPath ((e:Person {name: "Paul"}) - [:FRIEND_OF] - (m:Person {name: "Lisa"}))
 RETURN path
 
 - Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football
@@ -175,34 +171,43 @@ CREATE
 (e13)-[:CONNECTED_TO {time: 1200, price: 1100} ]->(e8),
 (e8)-[:CONNECTED_TO {time: 45, price: 150} ]->(e13)
 
-TO DELETE
- 
-MATCH (a:Airport) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
 
-
-- Find the total time from Moscow to Rio. Show also the path (airport connections) **COMPLETE**
+- Find the total time from Moscow to Rio. Show also the path (airport connections) ** NEEDS WORK **
 
 MATCH
-path = (e1:Airport {city: "moscow" }) - [:CONNECTED_TO*..3] -> (m:Airport {city:"rio"})
-RETURN path, length(path), COUNT(path) as totalPaths
+path = shortestPath ((e1:Airport {city: "moscow" }) - [c:CONNECTED_TO*] - (e2:Airport {city:"rio"}))
+RETURN path, REDUCE (tot_price = 0, connect IN relationships(path) | tot_price + connect.time ) as total_price
 
 
-- Show all the flights from Dublin to any destination and sort them by price (from the most expensive) **NEEDS WORK**
+- Show all the flights from Dublin to any destination and sort them by price (from the most expensive)
 
-MATCH (e1:Airport {city: "dublin"}) - [:CONNECTED_TO] - (e2:Airport) 
-RETURN e1, e2, e2.price
-ORDER BY e2.price
+MATCH (e1:Airport {city: "dublin"}) - [c:CONNECTED_TO] - (e2:Airport) 
+WITH e1, e2, collect(c) AS con
+ORDER BY REDUCE (sort_price = 0, connect IN con | sort_price + connect.price ) DESC
+RETURN e1, e2, REDUCE (tot_price = 0, connect IN con | tot_price + connect.price ) as total_price
 
 
-- Show what can be reached from Chicago in one or two steps (= direct flight or 1 change only) **COMPLETE**
+- Show what can be reached from Chicago in one or two steps (= direct flight or 1 change only)
 
 MATCH (e1:Airport {city: "chicago"}) - [:CONNECTED_TO*1..2] - (e2:Airport) 
 RETURN e1, e2
 
 
-- Show what can be reached from London in less than 240 minutes (4 hours). **NEEDS WORK**
+- Show what can be reached from London in less than 240 minutes (4 hours)
 
-path = (e1:Airport {city: "chicago"}) - [:CONNECTED_TO*..2] - (e2:Airport) 
-WHERE e2.time < 240
-RETURN e1, e2
-REDUCE (tot = 0, n IN relationships(path) | tot + )  as path_length
+MATCH (e1:Airport {city: "dublin"}) - [c:CONNECTED_TO] - (e2:Airport) 
+WITH e1, e2, collect(c) AS con
+WHERE REDUCE (sort_price = 0, connect IN con | sort_price + connect.time ) < 240 
+RETURN e1, e2, REDUCE (tot_price = 0, connect IN con | tot_price + connect.time ) as total_price
+
+
+
+TO DELETE
+ 
+MATCH (a:Person) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
+
+TO DELETE
+ 
+MATCH (a:Airport) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
+
+
