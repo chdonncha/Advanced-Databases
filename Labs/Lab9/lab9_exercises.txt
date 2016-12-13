@@ -1,5 +1,7 @@
 EXERCISE 1
 
+- create mary and bill and establish required relationships
+
 CREATE (e17:Person { name: "Tom", country: "Spain", age: 28, sport: "Football" }),
 (e18:Person { name: "Bill", country: "Ireland", age: 23})
 
@@ -19,7 +21,7 @@ MATCH (e1:Person {name: "Denis"}) - [:FRIEND_OF] - (e2)
 RETURN e2, e1.age as denisAge
 
 
-- Show all the person from Scotland **COMPLETE**
+- Show all the person from Scotland
 
 MATCH (e:Person {country: "Scotland"}) 
 RETURN e
@@ -53,19 +55,19 @@ RETURN e1.sport, AVG(e1.age) as averageAge
 
 - Show all the direct friends of Mary
 
-MATCH (e1:Person {name: "Mary"}) - [:FRIEND_OF] - (e2) 
+MATCH (e1:Person {name: "Mary"}) - [:FRIEND_OF] -> (e2) 
 RETURN e1, e2
 
 
 - Show all the friends of Paul with a maximum distance of 5 steps
 
-MATCH (e1:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (e2) 
+MATCH (e1:Person {name: "Paul"}) - [:FRIEND_OF*..5] -> (e2) 
 RETURN e1, e2
 
 
 - Count all the friends of Paul with maximum distance 5 steps by nationality
 
-MATCH (e1:Person {name: "Paul"}) - [:FRIEND_OF*..5] - (e2:Person) 
+MATCH (e1:Person {name: "Paul"}) - [:FRIEND_OF*..5] -> (e2:Person) 
 RETURN e2.country, COUNT(DISTINCT e2) as nationalityNumber
 
 
@@ -80,18 +82,19 @@ REDUCE (tot = 0, n IN relationships(path) | tot + length(path))  as path_length
 - Show the shortest path between Paul and Lisa.
 
 MATCH
-path = shortestPath ((e:Person {name: "Paul"}) - [:FRIEND_OF] - (m:Person {name: "Lisa"}))
+path = shortestPath ((e:Person {name: "Paul"}) - [:FRIEND_OF] -> (m:Person {name: "Lisa"}))
 RETURN path
 
 - Show (if exists) a connection between Mary and all her friends, where the path can only contain persons that play football
 
 MATCH
-path = (e1:Person {name: "Mary" }) - [:FRIEND_OF*..5] -> (e2:Person {sport:"Football"})
-RETURN e1, e2
+path = shortestPath ((e1:Person {name: "Mary" }) - [:FRIEND_OF] -> (e2:Person {sport:"Football"}))
+RETURN path
 
 
 EXERCISE 2
 
+- create the airport schema based on the given information
 
 CREATE
 (e1:Airport { city: "dublin", country: "ireland", code: "dub" }),
@@ -202,11 +205,9 @@ RETURN e1, e2, REDUCE (tot_price = 0, connect IN con | tot_price + connect.time 
 
 
 
-TO DELETE
+To delete the graphs
  
 MATCH (a:Person) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
-
-TO DELETE
  
 MATCH (a:Airport) OPTIONAL MATCH (a)-[r1]-(), (m)-[r2]-() DELETE a,r1,m,r2
 
