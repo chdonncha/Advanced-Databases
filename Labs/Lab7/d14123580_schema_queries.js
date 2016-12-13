@@ -1,7 +1,7 @@
 // q 1. Find all the students that failed
 
-db.lab1_query1.insert(
-    db.lab1.find({
+db.d14123580_schema_query1.insert(
+    db.d14123580_schema.find({
         'Courses': {
             $elemMatch: {
                 'Mark': {
@@ -14,8 +14,8 @@ db.lab1_query1.insert(
 
 // q 2. Find the number of people that passed each exam 
 
-db.lab1_query2.insert(
-	db.lab1.aggregate(
+db.d14123580_schema_query2.insert(
+	db.d14123580_schema.aggregate(
 		{$unwind : '$Courses'},
 		{$match : {'Courses.Mark' : {$gte: 40}}},
 		{$group : {_id : "$Courses.Course_ID", Count : {$sum : 1}}}
@@ -24,8 +24,8 @@ db.lab1_query2.insert(
 
 // q 3. Find the student with the highest average mark 
 
-db.lab1_query3.insert(
-	db.lab1.aggregate(
+db.d14123580_schema_query3.insert(
+	db.d14123580_schema.aggregate(
 		{$unwind : '$Courses'},
 		{$group : {_id : "$Student_ID", 
 			Name: {$first : '$Name'}, 
