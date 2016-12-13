@@ -72,10 +72,10 @@ db.teams.aggregate(
     {$group: {_id: '$players.p_id', age: {$first: '$players.age'}}}
 );
 
-// q 8. Using aggregate mongoDB operator, list the total point by league.
+// q 8. Using aggregate mongoDB operator, list the total point by league. **NEEDS WORK**
 
 db.teams.aggregate(
-    {$group: {_id: null, total : {$sum : '$points'}}}
+    {$group: {_id: '$league', total : {$sum : '$points'}}}
 );
 
 // q 9. Using aggregation, list all the teams by number of goals in descending order.
@@ -90,16 +90,32 @@ db.teams.aggregate(
 // q 10. Compute the average number of goal per match per player and store the output in a collection
 // named student_id_avg_goals.
 
-db.teams.aggregate(
-	{$unwind : '$players'},
-	{$project : {_id : "$players.p_id", 
-        Goals : '$players.goal',
-		Matches : '$players.caps',
-		avgAmount: { $divide : [ '$players.goal', '$players.caps' ]}}},
-	{$sort : {'avgAmount' : -1}}
+db.d14123580_avg_goals.insert(
+    db.teams.aggregate(
+    	{$unwind : '$players'},
+    	{$project : {_id : "$players.p_id", 
+            Goals : '$players.goal',
+    		Matches : '$players.caps',
+    		avgAmount: { $divide : [ '$players.goal', '$players.caps' ]}}},
+    	{$sort : {'avgAmount' : -1}}
+    ).toArray()
 );
 
 // q 11. Write a js function old_vs_young(x) , that receives a positive integer x representing the age of a player
+// 
+//
 // and returns 1 if the total number of goals scored by the players with age >= x years is greater than the 
 // total number of goals scored by the players with age < x, otherwise it returns 0.
 // The function also prints the number of goals for each group of players  
+
+function old_vs_young(x){
+
+     db.teams.aggregate(
+    {$unwind: '$players'}, 
+    {$match: {'players.age': {$gte: x}}},
+    {$group: {_id: '$players.p_id', totalGoals { $gte : x}}}
+    );
+
+}
+
+old_vs_young(50);
